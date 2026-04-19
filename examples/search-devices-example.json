@@ -1,0 +1,51 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://braket.us-east-1.amazonaws.com/devices/search",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "AWS4-HMAC-SHA256 Credential=..."
+    },
+    "body": {
+      "filters": [
+        {
+          "name": "deviceType",
+          "values": ["QPU"]
+        },
+        {
+          "name": "deviceStatus",
+          "values": ["ONLINE"]
+        }
+      ],
+      "maxResults": 10
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "devices": [
+        {
+          "deviceArn": "arn:aws:braket:us-east-1::device/qpu/ionq/Aria-1",
+          "deviceName": "Aria 1",
+          "deviceType": "QPU",
+          "deviceStatus": "ONLINE",
+          "providerName": "IonQ"
+        },
+        {
+          "deviceArn": "arn:aws:braket:us-west-1::device/qpu/rigetti/Ankaa-3",
+          "deviceName": "Ankaa-3",
+          "deviceType": "QPU",
+          "deviceStatus": "ONLINE",
+          "providerName": "Rigetti"
+        },
+        {
+          "deviceArn": "arn:aws:braket:eu-west-2::device/qpu/oqc/Lucy",
+          "deviceName": "Lucy",
+          "deviceType": "QPU",
+          "deviceStatus": "ONLINE",
+          "providerName": "Oxford Quantum Circuits"
+        }
+      ]
+    }
+  }
+}

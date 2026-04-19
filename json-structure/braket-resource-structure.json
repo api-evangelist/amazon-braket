@@ -1,0 +1,62 @@
+{
+  "title": "Amazon Braket Resource Structure",
+  "description": "Structural documentation for key resources in the Amazon Braket API",
+  "resources": {
+    "QuantumTask": {
+      "description": "A quantum circuit or annealing problem submitted to a device for execution",
+      "identifiers": ["quantumTaskArn"],
+      "fields": {
+        "quantumTaskArn": { "type": "string", "readOnly": true },
+        "deviceArn": { "type": "string", "required": true },
+        "action": { "type": "string", "required": true, "description": "JSON circuit representation (OpenQASM, ANNEALING)" },
+        "shots": { "type": "integer", "required": true },
+        "outputS3Bucket": { "type": "string", "required": true },
+        "outputS3KeyPrefix": { "type": "string", "required": true },
+        "deviceParameters": { "type": "string" },
+        "status": { "type": "enum[CREATED|QUEUED|RUNNING|COMPLETED|FAILED|CANCELLING|CANCELLED]", "readOnly": true },
+        "failureReason": { "type": "string", "readOnly": true },
+        "createdAt": { "type": "datetime", "readOnly": true },
+        "endedAt": { "type": "datetime", "readOnly": true }
+      },
+      "relationships": {
+        "submittedTo": ["Device"],
+        "associatedWith": ["Job"]
+      }
+    },
+    "Device": {
+      "description": "A quantum backend - either a QPU or simulator",
+      "identifiers": ["deviceArn"],
+      "fields": {
+        "deviceArn": { "type": "string", "readOnly": true },
+        "deviceName": { "type": "string", "readOnly": true },
+        "deviceType": { "type": "enum[QPU|SIMULATOR]", "readOnly": true },
+        "deviceStatus": { "type": "enum[ONLINE|OFFLINE|RETIRED]", "readOnly": true },
+        "providerName": { "type": "string", "readOnly": true },
+        "deviceCapabilities": { "type": "string", "readOnly": true, "description": "JSON capability specification" }
+      }
+    },
+    "Job": {
+      "description": "A hybrid quantum-classical job with managed classical compute and quantum access",
+      "identifiers": ["jobArn"],
+      "fields": {
+        "jobArn": { "type": "string", "readOnly": true },
+        "jobName": { "type": "string", "required": true },
+        "status": { "type": "enum[QUEUED|RUNNING|COMPLETED|FAILED|CANCELLING|CANCELLED]", "readOnly": true },
+        "algorithmSpecification": { "type": "object", "required": true },
+        "instanceConfig": { "type": "object", "required": true },
+        "outputDataConfig": { "type": "object", "required": true },
+        "deviceConfig": { "type": "object" },
+        "hyperParameters": { "type": "object" },
+        "stoppingCondition": { "type": "object" },
+        "roleArn": { "type": "string", "required": true },
+        "createdAt": { "type": "datetime", "readOnly": true },
+        "startedAt": { "type": "datetime", "readOnly": true },
+        "endedAt": { "type": "datetime", "readOnly": true },
+        "billableDuration": { "type": "integer", "readOnly": true }
+      },
+      "relationships": {
+        "creates": ["QuantumTask"]
+      }
+    }
+  }
+}

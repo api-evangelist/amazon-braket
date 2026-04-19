@@ -1,0 +1,51 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://braket.us-east-1.amazonaws.com/job",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "AWS4-HMAC-SHA256 Credential=..."
+    },
+    "body": {
+      "jobName": "vqe-molecular-simulation",
+      "algorithmSpecification": {
+        "scriptModeConfig": {
+          "entryPoint": "vqe_script:main",
+          "s3Uri": "s3://my-braket-bucket/algorithm/vqe_script.tar.gz",
+          "compressionType": "GZIP"
+        }
+      },
+      "instanceConfig": {
+        "instanceType": "ml.m5.large",
+        "instanceCount": 1,
+        "volumeSizeInGb": 30
+      },
+      "outputDataConfig": {
+        "s3Path": "s3://my-braket-bucket/jobs/vqe-output/"
+      },
+      "deviceConfig": {
+        "device": "arn:aws:braket:us-east-1::device/qpu/ionq/Aria-1"
+      },
+      "hyperParameters": {
+        "num_qubits": "4",
+        "max_iterations": "100",
+        "learning_rate": "0.01"
+      },
+      "stoppingCondition": {
+        "maxRuntimeInSeconds": 3600
+      },
+      "roleArn": "arn:aws:iam::123456789012:role/AmazonBraketJobsExecutionRole",
+      "clientToken": "550e8400-e29b-41d4-a716-446655440001",
+      "tags": {
+        "Algorithm": "VQE",
+        "Application": "Chemistry"
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "jobArn": "arn:aws:braket:us-east-1:123456789012:job/vqe-molecular-simulation"
+    }
+  }
+}

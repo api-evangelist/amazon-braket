@@ -1,0 +1,155 @@
+vocabulary:
+  domain: Amazon Braket
+  description: >-
+    Taxonomy and vocabulary for Amazon Braket covering quantum computing,
+    quantum hardware, circuits, hybrid algorithms, and quantum information science.
+
+  concepts:
+    - term: Quantum Computer
+      definition: >-
+        A computing device that uses quantum mechanical phenomena such as
+        superposition, entanglement, and interference to perform computations
+        that are infeasible for classical computers.
+
+    - term: QPU
+      label: Quantum Processing Unit
+      definition: >-
+        Physical quantum hardware that executes quantum circuits using
+        superconducting qubits, trapped ions, neutral atoms, or photonic systems.
+
+    - term: Qubit
+      definition: >-
+        The fundamental unit of quantum information. Unlike classical bits
+        (0 or 1), qubits can exist in superposition of both states simultaneously.
+
+    - term: Superposition
+      definition: >-
+        A quantum mechanical property where a qubit can exist in multiple
+        states simultaneously until measured, enabling parallel computation.
+
+    - term: Entanglement
+      definition: >-
+        A quantum phenomenon where two or more qubits become correlated such
+        that the state of one instantly influences the state of another,
+        regardless of distance.
+
+    - term: Quantum Gate
+      definition: >-
+        A basic quantum computing operation that manipulates qubit states,
+        analogous to classical logic gates. Examples include H (Hadamard),
+        CNOT (Controlled-NOT), and T gates.
+
+    - term: Quantum Circuit
+      definition: >-
+        A sequence of quantum gates applied to qubits to implement a
+        quantum algorithm, analogous to a classical program.
+
+    - term: Quantum Task
+      definition: >-
+        A single quantum circuit or annealing problem submitted to an Amazon
+        Braket device for execution, with results stored in Amazon S3.
+
+    - term: Hybrid Job
+      definition: >-
+        A managed compute workload that combines classical algorithms running
+        on EC2 with quantum circuit execution on QPU or simulator devices,
+        with priority QPU access over standalone tasks.
+
+    - term: Quantum Simulator
+      definition: >-
+        A classical computer program that emulates quantum hardware behavior
+        for testing and development. Braket offers SV1 (state vector), DM1
+        (density matrix), and TN1 (tensor network) simulators.
+
+    - term: Shots
+      definition: >-
+        The number of times a quantum circuit is executed and measured.
+        More shots reduce statistical uncertainty in measurement outcomes.
+
+    - term: OpenQASM
+      label: Open Quantum Assembly Language
+      definition: >-
+        An open-source quantum circuit description language used to specify
+        quantum programs in Amazon Braket tasks.
+
+    - term: VQE
+      label: Variational Quantum Eigensolver
+      definition: >-
+        A hybrid quantum-classical algorithm for finding the ground state
+        energy of molecules, widely used for quantum chemistry simulation.
+
+    - term: QAOA
+      label: Quantum Approximate Optimization Algorithm
+      definition: >-
+        A hybrid quantum-classical algorithm for solving combinatorial
+        optimization problems using quantum circuits.
+
+    - term: Quantum Annealing
+      definition: >-
+        A metaheuristic optimization technique that uses quantum fluctuations
+        to find the global minimum of an objective function.
+
+    - term: Noise
+      definition: >-
+        Unwanted perturbations in quantum hardware that cause errors in
+        qubit states and gate operations, a major challenge for near-term QPUs.
+
+    - term: NISQ
+      label: Noisy Intermediate-Scale Quantum
+      definition: >-
+        The current era of quantum hardware with 50-1000 qubits that are
+        subject to noise and lack full error correction.
+
+    - term: Pulse Control
+      definition: >-
+        Low-level control of quantum hardware using microwave or laser pulses
+        that implement quantum gates, enabling hardware-level optimization.
+
+  device-providers:
+    - name: IonQ
+      technology: Trapped Ion
+      devices:
+        - Aria 1
+        - Aria 2
+        - Forte 1
+    - name: Rigetti
+      technology: Superconducting
+      devices:
+        - Ankaa-3
+    - name: QuEra
+      technology: Neutral Atom
+      devices:
+        - Aquila
+    - name: Oxford Quantum Circuits
+      technology: Superconducting
+      devices:
+        - Lucy
+    - name: IQM
+      technology: Superconducting
+      devices:
+        - Garnet
+
+  simulators:
+    - name: SV1
+      description: State vector simulator for circuits up to 34 qubits
+    - name: DM1
+      description: Density matrix simulator for noise simulation up to 17 qubits
+    - name: TN1
+      description: Tensor network simulator for circuits up to 50 qubits
+
+  tags:
+    - Quantum Computing
+    - QPU
+    - Quantum Hardware
+    - Quantum Simulation
+    - Hybrid Quantum-Classical
+    - Qubits
+    - Quantum Circuits
+    - VQE
+    - QAOA
+    - Quantum Chemistry
+    - Quantum Optimization
+    - AWS
+    - Amazon Web Services
+    - Research
+    - HPC

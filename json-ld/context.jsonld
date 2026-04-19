@@ -1,0 +1,50 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "braket": "https://aws.amazon.com/braket/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "QuantumTask": "braket:QuantumTask",
+    "quantumTaskArn": "braket:quantumTaskArn",
+    "shots": "braket:shots",
+    "action": "braket:circuitAction",
+    "deviceParameters": "braket:deviceParameters",
+
+    "Device": "braket:Device",
+    "deviceArn": "braket:deviceArn",
+    "deviceName": "schema:name",
+    "deviceType": "braket:deviceType",
+    "deviceStatus": "braket:deviceStatus",
+    "providerName": "schema:provider",
+    "deviceCapabilities": "braket:deviceCapabilities",
+
+    "Job": "braket:HybridJob",
+    "jobArn": "braket:jobArn",
+    "jobName": "schema:name",
+    "algorithmSpecification": "braket:algorithmSpecification",
+    "instanceConfig": "braket:instanceConfig",
+    "hyperParameters": "braket:hyperParameters",
+
+    "status": "braket:status",
+    "failureReason": "braket:failureReason",
+
+    "outputS3Bucket": "braket:outputS3Bucket",
+    "outputS3KeyPrefix": "braket:outputS3KeyPrefix",
+
+    "createdAt": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "endedAt": {
+      "@id": "braket:endedAt",
+      "@type": "xsd:dateTime"
+    },
+    "startedAt": {
+      "@id": "braket:startedAt",
+      "@type": "xsd:dateTime"
+    },
+
+    "tags": "schema:additionalProperty"
+  }
+}

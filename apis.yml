@@ -1,16 +1,164 @@
 aid: amazon-braket
 name: Amazon Braket
 description: >-
-  Amazon Braket provides API capabilities.
+  Amazon Braket is a fully managed quantum computing service that helps
+  researchers and developers explore and build quantum algorithms, test them
+  on quantum circuit simulators, and run them on different quantum hardware
+  technologies. Braket provides access to multiple quantum processors from
+  IonQ, Rigetti, QuEra, Oxford Quantum Circuits, and IQM, as well as
+  high-performance quantum circuit simulators. It supports hybrid
+  quantum-classical algorithms through Braket Hybrid Jobs.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-tags: []
+tags:
+  - Quantum Computing
+  - Quantum Hardware
+  - Hybrid Quantum-Classical
+  - QPU
+  - Quantum Simulation
+  - AWS
+  - Amazon Web Services
+  - Research
+  - HPC
 url: >-
   https://raw.githubusercontent.com/api-evangelist/amazon-braket/refs/heads/main/apis.yml
 created: '2026-03-16'
-modified: '2026-03-16'
+modified: '2026-04-19'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: amazon-braket:amazon-braket-api
+    name: Amazon Braket API
+    description: >-
+      The Amazon Braket API provides programmatic access to quantum computing
+      resources including quantum task execution on QPUs and simulators, hybrid
+      quantum-classical job management, device discovery, and spending limit
+      management.
+    humanURL: https://aws.amazon.com/braket/
+    baseURL: https://braket.us-east-1.amazonaws.com
+    tags:
+      - Quantum Computing
+      - QPU
+      - Quantum Tasks
+      - Hybrid Jobs
+      - Simulators
+    properties:
+      - type: Documentation
+        url: https://docs.aws.amazon.com/braket/latest/APIReference/
+      - type: OpenAPI
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/amazon-braket/refs/heads/main/openapi/amazon-braket-api-openapi.yml
+      - type: JSONSchema
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/amazon-braket/refs/heads/main/json-schema/braket-task-schema.json
+      - type: JSONStructure
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/amazon-braket/refs/heads/main/json-structure/braket-resource-structure.json
+      - type: JSONLD
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/amazon-braket/refs/heads/main/json-ld/context.jsonld
+      - type: SpectralRuleset
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/amazon-braket/refs/heads/main/spectral/ruleset.yml
+      - type: Capabilities
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/amazon-braket/refs/heads/main/capabilities/capabilities.yml
+      - type: Vocabulary
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/amazon-braket/refs/heads/main/vocabulary/vocabulary.yml
+    contact:
+      - FN: AWS Support
+        url: https://aws.amazon.com/contact-us/
+    features:
+      - name: Quantum Task Execution
+        description: >-
+          Submit quantum circuits to QPU devices or simulators as quantum
+          tasks, with results stored in Amazon S3.
+      - name: Hybrid Jobs
+        description: >-
+          Run hybrid quantum-classical algorithms with managed classical
+          compute resources and priority QPU access.
+      - name: Device Discovery
+        description: >-
+          Search and retrieve details about available quantum devices including
+          QPUs from multiple providers and simulators.
+      - name: Multiple QPU Providers
+        description: >-
+          Access quantum hardware from IonQ, Rigetti, QuEra, Oxford Quantum
+          Circuits, IQM, and other providers through a unified API.
+      - name: Quantum Simulators
+        description: >-
+          Use high-performance local and managed simulators (SV1, DM1, TN1)
+          for circuit testing before running on QPUs.
+      - name: Spending Limits
+        description: >-
+          Create and manage spending limits to control QPU and simulator
+          usage costs at the account level.
+      - name: Pulse Control
+        description: >-
+          Access native gate-level pulse control for advanced quantum
+          hardware calibration and experimentation.
+    useCases:
+      - name: Quantum Algorithm Research
+        description: >-
+          Develop and test quantum algorithms on simulators before running
+          on QPU hardware across multiple providers.
+      - name: Quantum Machine Learning
+        description: >-
+          Run quantum-classical hybrid ML algorithms combining quantum circuits
+          with classical optimization using Braket Hybrid Jobs.
+      - name: Quantum Chemistry Simulation
+        description: >-
+          Simulate molecular interactions and chemical reactions using
+          variational quantum eigensolvers (VQE) on QPU hardware.
+      - name: Quantum Optimization
+        description: >-
+          Solve combinatorial optimization problems using QAOA and other
+          quantum optimization algorithms on available QPUs.
+    integrations:
+      - name: Amazon S3
+        description: Store quantum task results and job artifacts in Amazon S3
+      - name: Amazon CloudWatch
+        description: Monitor quantum job metrics and logs in CloudWatch
+      - name: AWS IAM
+        description: Control access to Braket resources with IAM policies
+      - name: Amazon ECR
+        description: Store custom container images for Braket Hybrid Jobs
+      - name: Amazon SageMaker
+        description: Integrate quantum algorithms with SageMaker ML workflows
+    solutions:
+      - name: Quantum Research Platform
+        description: >-
+          Build a comprehensive quantum research platform with access to
+          multiple QPU providers, simulators, and managed job infrastructure.
+common:
+  - type: Portal
+    url: https://aws.amazon.com/
+  - type: Website
+    url: https://aws.amazon.com/braket/
+  - type: Documentation
+    url: https://docs.aws.amazon.com/braket/
+  - type: TermsOfService
+    url: https://aws.amazon.com/service-terms/
+  - type: PrivacyPolicy
+    url: https://aws.amazon.com/privacy/
+  - type: Pricing
+    url: https://aws.amazon.com/braket/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/braket/faqs/
+  - type: GettingStarted
+    url: https://aws.amazon.com/braket/getting-started/
+  - type: Blog
+    url: https://aws.amazon.com/blogs/quantum-computing/
+  - type: GitHubOrganization
+    url: https://github.com/amazon-braket
+  - type: Console
+    url: https://console.aws.amazon.com/braket/
+  - type: SDK
+    url: https://github.com/amazon-braket/amazon-braket-sdk-python
+  - type: Examples
+    url: https://github.com/amazon-braket/amazon-braket-examples
+  - type: Contact
+    url: https://aws.amazon.com/contact-us/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

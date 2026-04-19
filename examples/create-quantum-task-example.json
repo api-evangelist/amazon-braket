@@ -1,0 +1,28 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://braket.us-east-1.amazonaws.com/quantum-task",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "AWS4-HMAC-SHA256 Credential=..."
+    },
+    "body": {
+      "deviceArn": "arn:aws:braket:us-east-1::device/quantum-simulator/amazon/sv1",
+      "action": "{\"braketSchemaHeader\":{\"name\":\"braket.ir.openqasm.program\",\"version\":\"1\"},\"source\":\"OPENQASM 3.0;\\nqubit[2] q;\\nh q[0];\\ncnot q[0], q[1];\\n#pragma braket result probability q[0], q[1]\",\"inputs\":{}}",
+      "shots": 1000,
+      "outputS3Bucket": "my-braket-results",
+      "outputS3KeyPrefix": "quantum-tasks/bell-state/",
+      "clientToken": "550e8400-e29b-41d4-a716-446655440000",
+      "tags": {
+        "Algorithm": "BellState",
+        "Project": "QuantumResearch"
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "quantumTaskArn": "arn:aws:braket:us-east-1:123456789012:quantum-task/abc12345-1234-1234-1234-abcdef123456"
+    }
+  }
+}

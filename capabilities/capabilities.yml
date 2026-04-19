@@ -1,0 +1,109 @@
+capabilities:
+  - id: run-quantum-tasks
+    name: Run Quantum Tasks
+    description: >-
+      Submit quantum circuits or annealing problems as tasks to QPU devices
+      or simulators. Monitor task status and retrieve results from Amazon S3.
+    operations:
+      - CreateQuantumTask
+      - GetQuantumTask
+      - CancelQuantumTask
+      - SearchQuantumTasks
+    tags:
+      - Quantum Tasks
+      - QPU
+      - Simulation
+      - Circuits
+
+  - id: discover-quantum-devices
+    name: Discover Quantum Devices
+    description: >-
+      Search and retrieve information about available quantum devices
+      including QPUs from multiple providers and simulators.
+    operations:
+      - GetDevice
+      - SearchDevices
+    tags:
+      - Devices
+      - QPU
+      - Discovery
+
+  - id: run-hybrid-jobs
+    name: Run Hybrid Jobs
+    description: >-
+      Create and manage hybrid quantum-classical jobs that run classical
+      algorithms with access to quantum hardware. Benefits from priority
+      QPU queueing over standalone quantum tasks.
+    operations:
+      - CreateJob
+      - GetJob
+      - CancelJob
+      - SearchJobs
+    tags:
+      - Hybrid Jobs
+      - Classical-Quantum
+      - HPC
+
+  - id: manage-spending-limits
+    name: Manage Spending Limits
+    description: >-
+      Create and manage spending limits to control QPU and simulator
+      usage costs at the account or team level.
+    operations:
+      - CreateSpendingLimit
+      - SearchSpendingLimits
+      - UpdateSpendingLimit
+      - DeleteSpendingLimit
+    tags:
+      - Spending Limits
+      - Cost Control
+      - Governance
+
+  - id: manage-tags
+    name: Manage Tags
+    description: >-
+      Apply and remove metadata tags on Amazon Braket resources.
+    operations:
+      - TagResource
+      - UntagResource
+      - ListTagsForResource
+    tags:
+      - Tags
+      - Governance
+
+compositions:
+  - id: quantum-circuit-experiment
+    name: Quantum Circuit Experiment
+    description: >-
+      End-to-end workflow for running a quantum circuit experiment:
+      discover available QPU devices, submit a quantum task, and
+      monitor results.
+    steps:
+      - capability: discover-quantum-devices
+        operation: SearchDevices
+      - capability: run-quantum-tasks
+        operation: CreateQuantumTask
+      - capability: run-quantum-tasks
+        operation: GetQuantumTask
+    tags:
+      - Quantum Circuits
+      - Experiment
+      - Workflow
+
+  - id: hybrid-vqe-workflow
+    name: Hybrid VQE Workflow
+    description: >-
+      Workflow for running a Variational Quantum Eigensolver (VQE) hybrid
+      algorithm for molecular simulation using Braket Hybrid Jobs.
+    steps:
+      - capability: discover-quantum-devices
+        operation: SearchDevices
+      - capability: run-hybrid-jobs
+        operation: CreateJob
+      - capability: run-hybrid-jobs
+        operation: GetJob
+    tags:
+      - VQE
+      - Chemistry
+      - Hybrid Jobs
+      - Workflow
