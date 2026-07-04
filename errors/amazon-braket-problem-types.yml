@@ -1,0 +1,62 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/amazon-braket-api-openapi.yml
+format: aws-json-error
+# Amazon Braket returns errors as application/json { "message": "..." } with an
+# x-amzn-ErrorType header, not RFC 9457 application/problem+json.
+problems:
+  - status: 400
+    name: ValidationException
+    title: The input fails to satisfy the constraints of an Amazon Braket operation.
+    remediation: Check request parameters against the API reference and correct invalid values.
+    operations:
+      - CreateQuantumTask
+      - CancelQuantumTask
+      - SearchQuantumTasks
+      - SearchDevices
+      - CreateJob
+      - SearchJobs
+      - CreateSpendingLimit
+  - status: 403
+    name: AccessDeniedException
+    title: You do not have sufficient access to perform this action.
+    remediation: Verify the IAM principal has the required braket:* permissions.
+    operations:
+      - CreateQuantumTask
+  - status: 404
+    name: ResourceNotFoundException
+    title: The requested resource does not exist.
+    remediation: Confirm the ARN or resource identifier is correct and in the current region.
+    operations:
+      - GetQuantumTask
+      - CancelQuantumTask
+      - GetDevice
+      - GetJob
+      - CancelJob
+      - DeleteSpendingLimit
+  - status: 409
+    name: ConflictException
+    title: An error occurred due to a conflict with the current state of the resource.
+    remediation: Retry after resolving the conflicting resource state (e.g. duplicate jobName or clientToken).
+    operations:
+      - CreateJob
+      - CancelJob
+  - status: 429
+    name: ThrottlingException
+    title: The request was throttled. Please try again later.
+    remediation: Implement exponential backoff and retry.
+    operations:
+      - CreateQuantumTask
+      - GetQuantumTask
+      - SearchQuantumTasks
+      - GetDevice
+      - SearchDevices
+      - CreateJob
+      - GetJob
+      - SearchJobs
+  - status: 500
+    name: InternalServiceException
+    title: The request processing has failed because of an internal error.
+    remediation: Retry the request; if the problem persists, contact AWS Support.
+    operations:
+      - CreateQuantumTask

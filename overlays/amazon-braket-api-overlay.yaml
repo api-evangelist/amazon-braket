@@ -1,0 +1,32 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Amazon Braket API
+  version: 1.0.0
+# generated: 2026-06-20 | method: generated | source: openapi/amazon-braket-api-openapi.yml
+extends: openapi/amazon-braket-api-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: amazon-braket
+      x-apievangelist-index: https://raw.githubusercontent.com/api-evangelist/amazon-braket/refs/heads/main/apis.yml
+      x-api-category:
+        - Quantum Computing
+        - Cloud Infrastructure
+  - target: $.info
+    update:
+      x-authentication: AWS Signature Version 4 (SigV4) over IAM credentials.
+  - target: $.tags[?(@.name=='Quantum Tasks')]
+    update:
+      x-apievangelist-capability: quantum-task-execution
+  - target: $.tags[?(@.name=='Jobs')]
+    update:
+      x-apievangelist-capability: hybrid-jobs
+  - target: $.tags[?(@.name=='Devices')]
+    update:
+      x-apievangelist-capability: device-discovery
+  - target: $.paths['/quantum-task'].post
+    update:
+      x-idempotency: Supports client-side idempotency via the optional clientToken field.
+  - target: $.paths['/job'].post
+    update:
+      x-idempotency: Requires clientToken for idempotent job creation.

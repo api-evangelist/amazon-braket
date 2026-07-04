@@ -1,0 +1,41 @@
+# Amazon Braket
+
+> Amazon Braket is a fully managed quantum computing service that helps researchers and developers explore and build quantum algorithms, test them on quantum circuit simulators, and run them on different quantum hardware technologies. Braket provides access to multiple quantum processors from IonQ, Rigetti, QuEra, Oxford Quantum Circuits, and IQM, plus high-performance simulators, and supports hybrid quantum-classical algorithms through Braket Hybrid Jobs.
+
+<!-- generated: 2026-06-20 | method: generated | source: apis.yml + repo artifacts. A generic AWS-wide llms.txt exists at https://docs.aws.amazon.com/llms.txt but is not Braket-specific. -->
+
+## APIs
+
+- [Amazon Braket API](https://aws.amazon.com/braket/): Programmatic access to quantum task execution on QPUs and simulators, hybrid job management, device discovery, and spending-limit management. Base URL https://braket.us-east-1.amazonaws.com (also us-west-2, eu-west-2).
+
+## Specs
+
+- [OpenAPI 3.1](https://raw.githubusercontent.com/api-evangelist/amazon-braket/refs/heads/main/openapi/amazon-braket-api-openapi.yml): Full OpenAPI description of the Braket API operations.
+- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/amazon-braket/refs/heads/main/json-schema/braket-task-schema.json): Quantum task schema.
+- [JSON Structure](https://raw.githubusercontent.com/api-evangelist/amazon-braket/refs/heads/main/json-structure/braket-resource-structure.json): Braket resource structure.
+- [JSON-LD Context](https://raw.githubusercontent.com/api-evangelist/amazon-braket/refs/heads/main/json-ld/context.jsonld): Linked-data context.
+- [Spectral Ruleset](https://raw.githubusercontent.com/api-evangelist/amazon-braket/refs/heads/main/spectral/ruleset.yml): Governance rules.
+- [Vocabulary](https://raw.githubusercontent.com/api-evangelist/amazon-braket/refs/heads/main/vocabulary/vocabulary.yml): API vocabulary.
+
+## Docs
+
+- [API Reference](https://docs.aws.amazon.com/braket/latest/APIReference/): Amazon Braket API reference.
+- [Developer Guide](https://docs.aws.amazon.com/braket/): Amazon Braket documentation.
+- [Getting Started](https://aws.amazon.com/braket/getting-started/): Getting started with Amazon Braket.
+- [Pricing](https://aws.amazon.com/braket/pricing/): Amazon Braket pricing.
+- [FAQ](https://aws.amazon.com/braket/faqs/): Frequently asked questions.
+
+## SDKs
+
+- [Amazon Braket Python SDK](https://github.com/amazon-braket/amazon-braket-sdk-python): `pip install amazon-braket-sdk`
+- [AWS SDK for JavaScript (Braket client)](https://www.npmjs.com/package/@aws-sdk/client-braket): `npm install @aws-sdk/client-braket`
+- [AWS SDK for Java v2 (braket)](https://central.sonatype.com/artifact/software.amazon.awssdk/braket)
+- [boto3 (Python)](https://pypi.org/project/boto3/): AWS SDK for Python with the `braket` client.
+- [Examples](https://github.com/amazon-braket/amazon-braket-examples): Notebook examples for Amazon Braket.
+
+## Optional
+
+- [PennyLane Plugin](https://github.com/amazon-braket/amazon-braket-pennylane-plugin-python): Quantum machine learning on Braket devices.
+- [Algorithm Library](https://github.com/amazon-braket/amazon-braket-algorithm-library): Ready-to-run quantum algorithms.
+- [Blog](https://aws.amazon.com/blogs/quantum-computing/): AWS Quantum Computing blog.
+- [Console](https://console.aws.amazon.com/braket/): Amazon Braket console.

@@ -1,0 +1,13 @@
+{
+  "repo": "amazon-braket",
+  "feeds": [
+    {
+      "source": "https://aws.amazon.com/blogs/quantum-computing/",
+      "feed_url": "https://aws.amazon.com/blogs/quantum-computing/feed/",
+      "title": "AWS Quantum Technologies Blog",
+      "saved": 10
+    }
+  ],
+  "fetched": "2026-07-04T13:39:28Z",
+  "post_count": 10
+}

@@ -1,0 +1,63 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/amazon-braket-api-openapi.yml
+status: candidate
+# No official AWS-hosted/remote MCP server for Amazon Braket was found as of this round.
+# Third-party community MCP servers exist (e.g. github.com/petertilsen/amazon-braket-mcp-server)
+# but are not first-party. The tool list below is DERIVED from OpenAPI operationIds as a
+# candidate surface for an MCP server fronting the Braket API.
+server:
+  name: amazon-braket
+  transport: stdio
+tools:
+  - name: CreateQuantumTask
+    description: Create a quantum task to run a circuit or problem on a QPU or simulator.
+    source_operation: openapi/amazon-braket-api-openapi.yml#CreateQuantumTask
+  - name: GetQuantumTask
+    description: Retrieve the details of a quantum task.
+    source_operation: openapi/amazon-braket-api-openapi.yml#GetQuantumTask
+  - name: CancelQuantumTask
+    description: Cancel the specified quantum task.
+    source_operation: openapi/amazon-braket-api-openapi.yml#CancelQuantumTask
+  - name: SearchQuantumTasks
+    description: Search for quantum tasks matching filter values.
+    source_operation: openapi/amazon-braket-api-openapi.yml#SearchQuantumTasks
+  - name: GetDevice
+    description: Retrieve details about a quantum device.
+    source_operation: openapi/amazon-braket-api-openapi.yml#GetDevice
+  - name: SearchDevices
+    description: Search for quantum devices using filters.
+    source_operation: openapi/amazon-braket-api-openapi.yml#SearchDevices
+  - name: CreateJob
+    description: Create an Amazon Braket Hybrid Job.
+    source_operation: openapi/amazon-braket-api-openapi.yml#CreateJob
+  - name: GetJob
+    description: Retrieve the details of a hybrid job.
+    source_operation: openapi/amazon-braket-api-openapi.yml#GetJob
+  - name: CancelJob
+    description: Cancel an Amazon Braket hybrid job.
+    source_operation: openapi/amazon-braket-api-openapi.yml#CancelJob
+  - name: SearchJobs
+    description: Search for hybrid jobs matching filter values.
+    source_operation: openapi/amazon-braket-api-openapi.yml#SearchJobs
+  - name: CreateSpendingLimit
+    description: Create a spending limit for QPU or simulator usage.
+    source_operation: openapi/amazon-braket-api-openapi.yml#CreateSpendingLimit
+  - name: SearchSpendingLimits
+    description: Search for spending limits matching filters.
+    source_operation: openapi/amazon-braket-api-openapi.yml#SearchSpendingLimits
+  - name: DeleteSpendingLimit
+    description: Delete a spending limit.
+    source_operation: openapi/amazon-braket-api-openapi.yml#DeleteSpendingLimit
+  - name: UpdateSpendingLimit
+    description: Update an existing spending limit.
+    source_operation: openapi/amazon-braket-api-openapi.yml#UpdateSpendingLimit
+  - name: ListTagsForResource
+    description: List tags for a Braket resource.
+    source_operation: openapi/amazon-braket-api-openapi.yml#ListTagsForResource
+  - name: TagResource
+    description: Add tags to a Braket resource.
+    source_operation: openapi/amazon-braket-api-openapi.yml#TagResource
+  - name: UntagResource
+    description: Remove tags from a Braket resource.
+    source_operation: openapi/amazon-braket-api-openapi.yml#UntagResource

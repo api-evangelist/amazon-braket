@@ -1,0 +1,21 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/amazon-braket-api-openapi.yml + https://aws.amazon.com/braket/
+versioning:
+  scheme: date-based-api-version
+  current: '2019-09-01'
+  docs: https://docs.aws.amazon.com/braket/latest/APIReference/
+  notes: >-
+    The Braket service API is versioned by a fixed date-stamped API version
+    (2019-09-01). New capabilities are surfaced through the AWS SDKs and the
+    amazon-braket-sdk-python client rather than a URI-path version bump.
+deprecation:
+  policy_url: https://docs.aws.amazon.com/braket/
+  sunset_header: false
+  notes: No RFC 8594 Sunset/Deprecation headers are documented for the Braket API.
+sla:
+  url: https://aws.amazon.com/braket/
+  uptime_target: null
+  notes: No standalone published SLA uptime target located for Amazon Braket.
+status_page: https://health.aws.amazon.com/health/status
+deprecated_operations: []

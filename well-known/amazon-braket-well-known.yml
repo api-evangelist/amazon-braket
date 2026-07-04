@@ -1,0 +1,29 @@
+generated: '2026-06-20'
+method: searched
+source: probed /.well-known/ on API and documentation hosts
+hosts:
+  - host: https://aws.amazon.com
+    documents:
+      - path: /.well-known/security.txt          # RFC 9116
+        status: 200
+        file: amazon-braket-security.txt
+      - path: /.well-known/ai-plugin.json
+        status: 301                               # redirect loop, no plugin manifest
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+  - host: https://braket.us-east-1.amazonaws.com  # SigV4 API endpoint
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+      - path: /.well-known/openid-configuration
+        status: 403
+      - path: /.well-known/oauth-authorization-server
+        status: 403
+      - path: /.well-known/api-catalog
+        status: 403
+      - path: /.well-known/ai-plugin.json
+        status: 403

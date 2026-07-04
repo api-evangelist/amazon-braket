@@ -23,7 +23,7 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/amazon-braket/refs/heads/main/apis.yml
 created: '2026-03-16'
-modified: '2026-04-19'
+modified: '2026-06-20'
 specificationVersion: '0.19'
 apis:
   - aid: amazon-braket:amazon-braket-api
@@ -65,6 +65,16 @@ apis:
       - type: Vocabulary
         url: >-
           https://raw.githubusercontent.com/api-evangelist/amazon-braket/refs/heads/main/vocabulary/vocabulary.yml
+      - type: Overlay
+        url: overlays/amazon-braket-api-overlay.yaml
+      - type: MCPServer
+        url: mcp/amazon-braket-mcp.yml
+      - type: Conformance
+        url: conformance/amazon-braket-conformance.yml
+      - type: ErrorCatalog
+        url: errors/amazon-braket-problem-types.yml
+      - type: Lifecycle
+        url: lifecycle/amazon-braket-lifecycle.yml
     contact:
       - FN: AWS Support
         url: https://aws.amazon.com/contact-us/
@@ -159,6 +169,14 @@ common:
     url: https://github.com/amazon-braket/amazon-braket-examples
   - type: Contact
     url: https://aws.amazon.com/contact-us/
+  - type: Packages
+    url: packages/amazon-braket-packages.yml
+  - type: WellKnown
+    url: well-known/amazon-braket-well-known.yml
+  - type: SecurityTxt
+    url: well-known/amazon-braket-security.txt
+  - type: LLMsTxt
+    url: llms/amazon-braket-llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

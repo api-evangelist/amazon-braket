@@ -1,0 +1,36 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/amazon-braket-api-openapi.yml
+standards:
+  - id: aws-sigv4
+    conforms: true
+    evidence: securityScheme aws_iam - AWS Signature Version 4 authentication over IAM.
+  - id: oauth2
+    conforms: false
+    evidence: No oauth2 security scheme; authentication is AWS SigV4/IAM.
+  - id: oidc
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors return application/json ErrorResponse (message field), not application/problem+json.
+  - id: pagination
+    conforms: true
+    evidence: Search operations accept maxResults and return nextToken cursor tokens.
+  - id: idempotency
+    conforms: true
+    evidence: CreateQuantumTask and CreateJob accept a clientToken for idempotent creation.
+  - id: json-api
+    conforms: false
+  - id: odata
+    conforms: false
+  - id: fhir-r4
+    conforms: false
+  - id: scim
+    conforms: false
+  - id: fapi
+    conforms: false
+  - id: psd2
+    conforms: false
+  - id: rfc8594-sunset
+    conforms: false
+    evidence: No Sunset/Deprecation header usage documented in the OpenAPI.

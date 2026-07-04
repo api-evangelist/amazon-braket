@@ -1,0 +1,118 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  https://pypi.org, https://registry.npmjs.org, https://api.nuget.org,
+  https://repo1.maven.org, https://rubygems.org, https://pkg.go.dev
+packages:
+  # First-party Amazon Braket Python libraries (GitHub org amazon-braket / aws)
+  - language: python
+    registry: pypi
+    name: amazon-braket-sdk
+    version: 1.121.0
+    url: https://pypi.org/project/amazon-braket-sdk/
+    source: https://github.com/amazon-braket/amazon-braket-sdk-python
+    install: pip install amazon-braket-sdk
+    official: true
+    description: Official Python SDK for Amazon Braket - build, simulate, and run quantum circuits.
+  - language: python
+    registry: pypi
+    name: amazon-braket-schemas
+    version: 1.31.0
+    url: https://pypi.org/project/amazon-braket-schemas/
+    source: https://github.com/amazon-braket/amazon-braket-schemas-python
+    install: pip install amazon-braket-schemas
+    official: true
+    description: Intermediate representation schemas shared by Braket SDK and service.
+  - language: python
+    registry: pypi
+    name: amazon-braket-default-simulator
+    version: 1.39.5
+    url: https://pypi.org/project/amazon-braket-default-simulator/
+    source: https://github.com/amazon-braket/amazon-braket-default-simulator-python
+    install: pip install amazon-braket-default-simulator
+    official: true
+    description: Local quantum circuit simulator bundled with the Braket SDK.
+  - language: python
+    registry: pypi
+    name: amazon-braket-pennylane-plugin
+    version: 1.34.2
+    url: https://pypi.org/project/amazon-braket-pennylane-plugin/
+    source: https://github.com/amazon-braket/amazon-braket-pennylane-plugin-python
+    install: pip install amazon-braket-pennylane-plugin
+    official: true
+    description: PennyLane plugin exposing Braket devices for quantum machine learning.
+  - language: python
+    registry: pypi
+    name: amazon-braket-algorithm-library
+    version: 1.7.8
+    url: https://pypi.org/project/amazon-braket-algorithm-library/
+    source: https://github.com/amazon-braket/amazon-braket-algorithm-library
+    install: pip install amazon-braket-algorithm-library
+    official: true
+    description: Ready-to-run quantum algorithm implementations for Amazon Braket.
+  - language: python
+    registry: pypi
+    name: amazon-braket-strawberryfields-plugin
+    version: 1.1.0.post1
+    url: https://pypi.org/project/amazon-braket-strawberryfields-plugin/
+    source: https://github.com/aws/amazon-braket-strawberryfields-plugin-python
+    install: pip install amazon-braket-strawberryfields-plugin
+    official: true
+    description: Strawberry Fields plugin for photonic devices on Amazon Braket.
+  # AWS general-purpose SDK clients (first-party AWS)
+  - language: python
+    registry: pypi
+    name: boto3
+    url: https://pypi.org/project/boto3/
+    install: pip install boto3
+    official: true
+    description: AWS SDK for Python; exposes the low-level `braket` service client.
+  - language: javascript
+    registry: npm
+    name: "@aws-sdk/client-braket"
+    version: 3.1079.0
+    url: https://www.npmjs.com/package/@aws-sdk/client-braket
+    install: npm install @aws-sdk/client-braket
+    official: true
+    description: AWS SDK for JavaScript v3 - Amazon Braket client.
+  - language: dotnet
+    registry: nuget
+    name: AWSSDK.Braket
+    version: 4.0.100.2
+    url: https://www.nuget.org/packages/AWSSDK.Braket/
+    install: dotnet add package AWSSDK.Braket
+    official: true
+    description: AWS SDK for .NET - Amazon Braket client.
+  - language: java
+    registry: maven
+    name: software.amazon.awssdk:braket
+    version: 2.46.21
+    url: https://central.sonatype.com/artifact/software.amazon.awssdk/braket
+    install: "implementation 'software.amazon.awssdk:braket:2.46.21'"
+    official: true
+    description: AWS SDK for Java v2 - Amazon Braket client.
+  - language: ruby
+    registry: rubygems
+    name: aws-sdk-braket
+    version: 1.73.0
+    url: https://rubygems.org/gems/aws-sdk-braket
+    install: gem install aws-sdk-braket
+    official: true
+    description: AWS SDK for Ruby - Amazon Braket client.
+  - language: go
+    registry: pkg.go.dev
+    name: github.com/aws/aws-sdk-go-v2/service/braket
+    url: https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/braket
+    install: go get github.com/aws/aws-sdk-go-v2/service/braket
+    official: true
+    description: AWS SDK for Go v2 - Amazon Braket client.
+  # Community / ecosystem (not first-party)
+  - language: python
+    registry: pypi
+    name: qiskit-braket-provider
+    version: 0.17.3
+    url: https://pypi.org/project/qiskit-braket-provider/
+    source: https://github.com/qiskit-community/qiskit-braket-provider
+    install: pip install qiskit-braket-provider
+    official: false
+    description: Qiskit provider to run circuits on Amazon Braket backends (community, built with AWS).
