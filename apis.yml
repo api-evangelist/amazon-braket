@@ -141,6 +141,14 @@ apis:
           Build a comprehensive quantum research platform with access to
           multiple QPU providers, simulators, and managed job infrastructure.
 common:
+  - type: TrustCenter
+    url: security/amazon-braket-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/amazon-braket-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/amazon-braket-domain-security.yml
+  - type: Authentication
+    url: authentication/amazon-braket-authentication.yml
   - type: Portal
     url: https://aws.amazon.com/
   - type: Website
