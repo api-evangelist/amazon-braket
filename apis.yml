@@ -141,6 +141,8 @@ apis:
           Build a comprehensive quantum research platform with access to
           multiple QPU providers, simulators, and managed job infrastructure.
 common:
+  - type: AgenticAccess
+    url: agentic-access/amazon-braket-agentic-access.yml
   - type: TrustCenter
     url: security/amazon-braket-trust-center.yml
   - type: VulnerabilityDisclosure
