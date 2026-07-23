@@ -1,0 +1,286 @@
+openapi: 3.1.0
+info:
+  title: Amazon Braket Devices Quantum Tasks API
+  description: Amazon Braket is a fully managed quantum computing service that provides access to quantum processors, simulators, and hybrid quantum-classical compute through a unified API.
+  version: '2019-09-01'
+  contact:
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+servers:
+- url: https://braket.us-east-1.amazonaws.com
+  description: US East (N. Virginia)
+- url: https://braket.us-west-2.amazonaws.com
+  description: US West (Oregon)
+- url: https://braket.eu-west-2.amazonaws.com
+  description: EU (London)
+security:
+- aws_iam: []
+tags:
+- name: Quantum Tasks
+  description: Submit and manage quantum tasks on QPUs and simulators
+paths:
+  /quantum-task:
+    post:
+      operationId: CreateQuantumTask
+      summary: Create Quantum Task
+      description: Creates a quantum task. A quantum task is a circuit or problem that you want to run on a quantum device. Amazon Braket queues the task until the device is available and returns results to the specified Amazon S3 location.
+      tags:
+      - Quantum Tasks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateQuantumTaskRequest'
+      responses:
+        '201':
+          description: Quantum task created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateQuantumTaskResponse'
+        '400':
+          $ref: '#/components/responses/ValidationException'
+        '403':
+          $ref: '#/components/responses/AccessDeniedException'
+        '429':
+          $ref: '#/components/responses/ThrottlingException'
+        '500':
+          $ref: '#/components/responses/InternalServiceException'
+  /quantum-task/{quantumTaskArn}:
+    get:
+      operationId: GetQuantumTask
+      summary: Get Quantum Task
+      description: Retrieves the details of a quantum task.
+      tags:
+      - Quantum Tasks
+      parameters:
+      - name: quantumTaskArn
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Quantum task details returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuantumTask'
+        '404':
+          $ref: '#/components/responses/ResourceNotFoundException'
+        '429':
+          $ref: '#/components/responses/ThrottlingException'
+  /quantum-task/{quantumTaskArn}/cancel:
+    put:
+      operationId: CancelQuantumTask
+      summary: Cancel Quantum Task
+      description: Cancels the specified task.
+      tags:
+      - Quantum Tasks
+      parameters:
+      - name: quantumTaskArn
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - clientToken
+              properties:
+                clientToken:
+                  type: string
+      responses:
+        '200':
+          description: Quantum task cancellation initiated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cancellationStatus:
+                    type: string
+                  quantumTaskArn:
+                    type: string
+        '400':
+          $ref: '#/components/responses/ValidationException'
+        '404':
+          $ref: '#/components/responses/ResourceNotFoundException'
+  /quantum-tasks/search:
+    post:
+      operationId: SearchQuantumTasks
+      summary: Search Quantum Tasks
+      description: Searches for tasks that match the specified filter values.
+      tags:
+      - Quantum Tasks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchQuantumTasksRequest'
+      responses:
+        '200':
+          description: Quantum tasks matching filters returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchQuantumTasksResponse'
+        '400':
+          $ref: '#/components/responses/ValidationException'
+        '429':
+          $ref: '#/components/responses/ThrottlingException'
+components:
+  schemas:
+    SearchQuantumTasksRequest:
+      type: object
+      properties:
+        filters:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              operator:
+                type: string
+              values:
+                type: array
+                items:
+                  type: string
+        maxResults:
+          type: integer
+        nextToken:
+          type: string
+    SearchQuantumTasksResponse:
+      type: object
+      properties:
+        quantumTasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuantumTask'
+        nextToken:
+          type: string
+    CreateQuantumTaskRequest:
+      type: object
+      required:
+      - action
+      - deviceArn
+      - outputS3Bucket
+      - outputS3KeyPrefix
+      - shots
+      properties:
+        action:
+          type: string
+          description: JSON representation of the quantum circuit or annealing problem
+        associations:
+          type: array
+          items:
+            type: object
+        clientToken:
+          type: string
+        deviceArn:
+          type: string
+          description: ARN of the quantum device to run the task on
+        deviceParameters:
+          type: string
+          description: Device-specific parameters in JSON format
+        jobToken:
+          type: string
+        outputS3Bucket:
+          type: string
+        outputS3KeyPrefix:
+          type: string
+        shots:
+          type: integer
+          description: Number of times to run the quantum circuit
+        tags:
+          type: object
+    QuantumTask:
+      type: object
+      properties:
+        quantumTaskArn:
+          type: string
+        deviceArn:
+          type: string
+        shots:
+          type: integer
+        outputS3Bucket:
+          type: string
+        outputS3KeyPrefix:
+          type: string
+        status:
+          type: string
+          enum:
+          - CREATED
+          - QUEUED
+          - RUNNING
+          - COMPLETED
+          - FAILED
+          - CANCELLING
+          - CANCELLED
+        failureReason:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        endedAt:
+          type: string
+          format: date-time
+        tags:
+          type: object
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    CreateQuantumTaskResponse:
+      type: object
+      properties:
+        quantumTaskArn:
+          type: string
+  responses:
+    AccessDeniedException:
+      description: You do not have sufficient access to perform this action.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ResourceNotFoundException:
+      description: The requested resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ValidationException:
+      description: The input fails to satisfy the constraints of an Amazon Braket operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ThrottlingException:
+      description: The request was throttled. Please try again later.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalServiceException:
+      description: The request processing has failed because of an internal error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    aws_iam:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication
+externalDocs:
+  description: Amazon Braket API Reference
+  url: https://docs.aws.amazon.com/braket/latest/APIReference/

@@ -1,0 +1,153 @@
+openapi: 3.1.0
+info:
+  title: Amazon Braket Devices Spending Limits API
+  description: Amazon Braket is a fully managed quantum computing service that provides access to quantum processors, simulators, and hybrid quantum-classical compute through a unified API.
+  version: '2019-09-01'
+  contact:
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+servers:
+- url: https://braket.us-east-1.amazonaws.com
+  description: US East (N. Virginia)
+- url: https://braket.us-west-2.amazonaws.com
+  description: US West (Oregon)
+- url: https://braket.eu-west-2.amazonaws.com
+  description: EU (London)
+security:
+- aws_iam: []
+tags:
+- name: Spending Limits
+  description: Control QPU and simulator spending
+paths:
+  /spending-limit:
+    post:
+      operationId: CreateSpendingLimit
+      summary: Create Spending Limit
+      description: Creates a spending limit for Amazon Braket QPU or simulator usage.
+      tags:
+      - Spending Limits
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - maxCost
+              - resourceType
+              - timeRange
+              properties:
+                maxCost:
+                  type: number
+                resourceType:
+                  type: string
+                  enum:
+                  - QPU
+                  - SIMULATOR
+                timeRange:
+                  type: string
+      responses:
+        '201':
+          description: Spending limit created
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/ValidationException'
+  /spending-limits/search:
+    post:
+      operationId: SearchSpendingLimits
+      summary: Search Spending Limits
+      description: Searches for spending limits matching the specified filters.
+      tags:
+      - Spending Limits
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                maxResults:
+                  type: integer
+                nextToken:
+                  type: string
+      responses:
+        '200':
+          description: Spending limits returned
+          content:
+            application/json:
+              schema:
+                type: object
+  /spending-limit/{spendingLimitId}:
+    delete:
+      operationId: DeleteSpendingLimit
+      summary: Delete Spending Limit
+      description: Deletes a spending limit.
+      tags:
+      - Spending Limits
+      parameters:
+      - name: spendingLimitId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Spending limit deleted
+        '404':
+          $ref: '#/components/responses/ResourceNotFoundException'
+    patch:
+      operationId: UpdateSpendingLimit
+      summary: Update Spending Limit
+      description: Updates an existing spending limit.
+      tags:
+      - Spending Limits
+      parameters:
+      - name: spendingLimitId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                maxCost:
+                  type: number
+      responses:
+        '200':
+          description: Spending limit updated
+components:
+  responses:
+    ResourceNotFoundException:
+      description: The requested resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ValidationException:
+      description: The input fails to satisfy the constraints of an Amazon Braket operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+  securitySchemes:
+    aws_iam:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication
+externalDocs:
+  description: Amazon Braket API Reference
+  url: https://docs.aws.amazon.com/braket/latest/APIReference/

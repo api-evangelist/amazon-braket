@@ -1,0 +1,102 @@
+openapi: 3.1.0
+info:
+  title: Amazon Braket Devices Tags API
+  description: Amazon Braket is a fully managed quantum computing service that provides access to quantum processors, simulators, and hybrid quantum-classical compute through a unified API.
+  version: '2019-09-01'
+  contact:
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+servers:
+- url: https://braket.us-east-1.amazonaws.com
+  description: US East (N. Virginia)
+- url: https://braket.us-west-2.amazonaws.com
+  description: US West (Oregon)
+- url: https://braket.eu-west-2.amazonaws.com
+  description: EU (London)
+security:
+- aws_iam: []
+tags:
+- name: Tags
+  description: Manage resource tags
+paths:
+  /tags/{resourceArn}:
+    get:
+      operationId: ListTagsForResource
+      summary: List Tags For Resource
+      description: Lists tags for a Braket resource.
+      tags:
+      - Tags
+      parameters:
+      - name: resourceArn
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Tags returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tags:
+                    type: object
+    post:
+      operationId: TagResource
+      summary: Tag Resource
+      description: Add tags to a Braket resource.
+      tags:
+      - Tags
+      parameters:
+      - name: resourceArn
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - tags
+              properties:
+                tags:
+                  type: object
+      responses:
+        '200':
+          description: Tags added successfully
+    delete:
+      operationId: UntagResource
+      summary: Untag Resource
+      description: Remove tags from a Braket resource.
+      tags:
+      - Tags
+      parameters:
+      - name: resourceArn
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: tagKeys
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Tags removed successfully
+components:
+  securitySchemes:
+    aws_iam:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication
+externalDocs:
+  description: Amazon Braket API Reference
+  url: https://docs.aws.amazon.com/braket/latest/APIReference/

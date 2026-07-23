@@ -1,0 +1,154 @@
+openapi: 3.1.0
+info:
+  title: Amazon Braket Devices API
+  description: Amazon Braket is a fully managed quantum computing service that provides access to quantum processors, simulators, and hybrid quantum-classical compute through a unified API.
+  version: '2019-09-01'
+  contact:
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+servers:
+- url: https://braket.us-east-1.amazonaws.com
+  description: US East (N. Virginia)
+- url: https://braket.us-west-2.amazonaws.com
+  description: US West (Oregon)
+- url: https://braket.eu-west-2.amazonaws.com
+  description: EU (London)
+security:
+- aws_iam: []
+tags:
+- name: Devices
+  description: Discover and retrieve details about quantum devices
+paths:
+  /device/{deviceArn}:
+    get:
+      operationId: GetDevice
+      summary: Get Device
+      description: Retrieves the devices available in Amazon Braket.
+      tags:
+      - Devices
+      parameters:
+      - name: deviceArn
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Device details returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        '404':
+          $ref: '#/components/responses/ResourceNotFoundException'
+        '429':
+          $ref: '#/components/responses/ThrottlingException'
+  /devices/search:
+    post:
+      operationId: SearchDevices
+      summary: Search Devices
+      description: Searches for devices using the specified filters.
+      tags:
+      - Devices
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchDevicesRequest'
+      responses:
+        '200':
+          description: Devices matching filters returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchDevicesResponse'
+        '400':
+          $ref: '#/components/responses/ValidationException'
+        '429':
+          $ref: '#/components/responses/ThrottlingException'
+components:
+  schemas:
+    Device:
+      type: object
+      properties:
+        deviceArn:
+          type: string
+        deviceName:
+          type: string
+        deviceType:
+          type: string
+          enum:
+          - QPU
+          - SIMULATOR
+        deviceStatus:
+          type: string
+          enum:
+          - ONLINE
+          - OFFLINE
+          - RETIRED
+        providerName:
+          type: string
+        deviceCapabilities:
+          type: string
+          description: JSON string with device capabilities
+    SearchDevicesRequest:
+      type: object
+      properties:
+        filters:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              values:
+                type: array
+                items:
+                  type: string
+        maxResults:
+          type: integer
+        nextToken:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    SearchDevicesResponse:
+      type: object
+      properties:
+        devices:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device'
+        nextToken:
+          type: string
+  responses:
+    ResourceNotFoundException:
+      description: The requested resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ValidationException:
+      description: The input fails to satisfy the constraints of an Amazon Braket operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ThrottlingException:
+      description: The request was throttled. Please try again later.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    aws_iam:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication
+externalDocs:
+  description: Amazon Braket API Reference
+  url: https://docs.aws.amazon.com/braket/latest/APIReference/

@@ -1,0 +1,290 @@
+openapi: 3.1.0
+info:
+  title: Amazon Braket Devices Jobs API
+  description: Amazon Braket is a fully managed quantum computing service that provides access to quantum processors, simulators, and hybrid quantum-classical compute through a unified API.
+  version: '2019-09-01'
+  contact:
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+servers:
+- url: https://braket.us-east-1.amazonaws.com
+  description: US East (N. Virginia)
+- url: https://braket.us-west-2.amazonaws.com
+  description: US West (Oregon)
+- url: https://braket.eu-west-2.amazonaws.com
+  description: EU (London)
+security:
+- aws_iam: []
+tags:
+- name: Jobs
+  description: Manage hybrid quantum-classical jobs
+paths:
+  /job:
+    post:
+      operationId: CreateJob
+      summary: Create Job
+      description: Creates an Amazon Braket Hybrid Job. A hybrid job runs a classical algorithm with access to quantum devices for executing quantum tasks.
+      tags:
+      - Jobs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateJobRequest'
+      responses:
+        '201':
+          description: Hybrid job created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jobArn:
+                    type: string
+        '400':
+          $ref: '#/components/responses/ValidationException'
+        '409':
+          $ref: '#/components/responses/ConflictException'
+        '429':
+          $ref: '#/components/responses/ThrottlingException'
+  /job/{jobArn}:
+    get:
+      operationId: GetJob
+      summary: Get Job
+      description: Retrieves the details of a hybrid job.
+      tags:
+      - Jobs
+      parameters:
+      - name: jobArn
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: additionalAttributeNames
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Job details returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '404':
+          $ref: '#/components/responses/ResourceNotFoundException'
+        '429':
+          $ref: '#/components/responses/ThrottlingException'
+  /job/{jobArn}/cancel:
+    put:
+      operationId: CancelJob
+      summary: Cancel Job
+      description: Cancels an Amazon Braket hybrid job.
+      tags:
+      - Jobs
+      parameters:
+      - name: jobArn
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Job cancellation initiated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cancellationStatus:
+                    type: string
+                  jobArn:
+                    type: string
+        '404':
+          $ref: '#/components/responses/ResourceNotFoundException'
+        '409':
+          $ref: '#/components/responses/ConflictException'
+  /jobs/search:
+    post:
+      operationId: SearchJobs
+      summary: Search Jobs
+      description: Searches for Amazon Braket hybrid jobs that match the specified filter values.
+      tags:
+      - Jobs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchJobsRequest'
+      responses:
+        '200':
+          description: Jobs matching filters returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchJobsResponse'
+        '400':
+          $ref: '#/components/responses/ValidationException'
+        '429':
+          $ref: '#/components/responses/ThrottlingException'
+components:
+  schemas:
+    SearchJobsResponse:
+      type: object
+      properties:
+        jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'
+        nextToken:
+          type: string
+    CreateJobRequest:
+      type: object
+      required:
+      - algorithmSpecification
+      - clientToken
+      - instanceConfig
+      - jobName
+      - outputDataConfig
+      - roleArn
+      properties:
+        algorithmSpecification:
+          type: object
+          properties:
+            containerImage:
+              type: object
+              properties:
+                uri:
+                  type: string
+            scriptModeConfig:
+              type: object
+              properties:
+                entryPoint:
+                  type: string
+                s3Uri:
+                  type: string
+                compressionType:
+                  type: string
+        associations:
+          type: array
+        checkpointConfig:
+          type: object
+        clientToken:
+          type: string
+        deviceConfig:
+          type: object
+          properties:
+            device:
+              type: string
+        hyperParameters:
+          type: object
+        inputDataConfig:
+          type: array
+        instanceConfig:
+          type: object
+          properties:
+            instanceCount:
+              type: integer
+            instanceType:
+              type: string
+            volumeSizeInGb:
+              type: integer
+        jobName:
+          type: string
+        outputDataConfig:
+          type: object
+          properties:
+            s3Path:
+              type: string
+        roleArn:
+          type: string
+        stoppingCondition:
+          type: object
+          properties:
+            maxRuntimeInSeconds:
+              type: integer
+        tags:
+          type: object
+    Job:
+      type: object
+      properties:
+        jobArn:
+          type: string
+        jobName:
+          type: string
+        status:
+          type: string
+          enum:
+          - QUEUED
+          - RUNNING
+          - COMPLETED
+          - FAILED
+          - CANCELLING
+          - CANCELLED
+        failureReason:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        endedAt:
+          type: string
+          format: date-time
+        startedAt:
+          type: string
+          format: date-time
+        billableDuration:
+          type: integer
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    SearchJobsRequest:
+      type: object
+      properties:
+        filters:
+          type: array
+          items:
+            type: object
+        maxResults:
+          type: integer
+        nextToken:
+          type: string
+  responses:
+    ResourceNotFoundException:
+      description: The requested resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ConflictException:
+      description: An error occurred due to a conflict with the current state of the resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ValidationException:
+      description: The input fails to satisfy the constraints of an Amazon Braket operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ThrottlingException:
+      description: The request was throttled. Please try again later.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    aws_iam:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication
+externalDocs:
+  description: Amazon Braket API Reference
+  url: https://docs.aws.amazon.com/braket/latest/APIReference/
