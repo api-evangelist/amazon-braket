@@ -1,0 +1,22 @@
+{
+  "provider": "amazon-braket",
+  "sources": [
+    "amazon-braket-devices-api-openapi.yml",
+    "amazon-braket-jobs-api-openapi.yml",
+    "amazon-braket-quantum-tasks-api-openapi.yml",
+    "amazon-braket-spending-limits-api-openapi.yml",
+    "amazon-braket-tags-api-openapi.yml"
+  ],
+  "outputs": [
+    "amazon-braket-devices-api-openapi.yml",
+    "amazon-braket-jobs-api-openapi.yml",
+    "amazon-braket-quantum-tasks-api-openapi.yml",
+    "amazon-braket-spending-limits-api-openapi.yml",
+    "amazon-braket-tags-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
