@@ -1,0 +1,96 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon Braket Devices Spending Limits API",
+    "version": "2019-09-01"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Spending Limits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Spending Limit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://braket.us-east-1.amazonaws.com/spending-limit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a spending limit for Amazon Braket QPU or simulator usage."
+        },
+        {
+          "info": {
+            "name": "Search Spending Limits",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://braket.us-east-1.amazonaws.com/spending-limits/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches for spending limits matching the specified filters."
+        },
+        {
+          "info": {
+            "name": "Update Spending Limit",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://braket.us-east-1.amazonaws.com/spending-limit/:spendingLimitId",
+            "params": [
+              {
+                "name": "spendingLimitId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing spending limit."
+        },
+        {
+          "info": {
+            "name": "Delete Spending Limit",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://braket.us-east-1.amazonaws.com/spending-limit/:spendingLimitId",
+            "params": [
+              {
+                "name": "spendingLimitId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a spending limit."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

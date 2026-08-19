@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon Braket Devices Tags API",
+    "version": "2019-09-01"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Tags For Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://braket.us-east-1.amazonaws.com/tags/:resourceArn",
+            "params": [
+              {
+                "name": "resourceArn",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists tags for a Braket resource."
+        },
+        {
+          "info": {
+            "name": "Tag Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://braket.us-east-1.amazonaws.com/tags/:resourceArn",
+            "params": [
+              {
+                "name": "resourceArn",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add tags to a Braket resource."
+        },
+        {
+          "info": {
+            "name": "Untag Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://braket.us-east-1.amazonaws.com/tags/:resourceArn",
+            "params": [
+              {
+                "name": "resourceArn",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tagKeys",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Remove tags from a Braket resource."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

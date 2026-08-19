@@ -1,0 +1,998 @@
+{
+  "item": [
+    {
+      "id": "f36813d2-cf6a-4487-9a04-e0fb78fb029a",
+      "name": "Quantum Tasks",
+      "description": {
+        "content": "Submit and manage quantum tasks on QPUs and simulators",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4643ba94-1d20-489d-838e-7889414d742a",
+          "name": "Create Quantum Task",
+          "request": {
+            "name": "Create Quantum Task",
+            "description": {
+              "content": "Creates a quantum task. A quantum task is a circuit or problem that you want to run on a quantum device. Amazon Braket queues the task until the device is available and returns results to the specified Amazon S3 location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "quantum-task"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"deviceArn\": \"<string>\",\n  \"outputS3Bucket\": \"<string>\",\n  \"outputS3KeyPrefix\": \"<string>\",\n  \"shots\": \"<integer>\",\n  \"associations\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"clientToken\": \"<string>\",\n  \"deviceParameters\": \"<string>\",\n  \"jobToken\": \"<string>\",\n  \"tags\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7bed3385-b9de-495d-a454-252a4720ad56",
+              "name": "Quantum task created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quantum-task"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"deviceArn\": \"<string>\",\n  \"outputS3Bucket\": \"<string>\",\n  \"outputS3KeyPrefix\": \"<string>\",\n  \"shots\": \"<integer>\",\n  \"associations\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"clientToken\": \"<string>\",\n  \"deviceParameters\": \"<string>\",\n  \"jobToken\": \"<string>\",\n  \"tags\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quantumTaskArn\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f60e8090-a155-4284-a613-64dbd9efd580",
+              "name": "The input fails to satisfy the constraints of an Amazon Braket operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quantum-task"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"deviceArn\": \"<string>\",\n  \"outputS3Bucket\": \"<string>\",\n  \"outputS3KeyPrefix\": \"<string>\",\n  \"shots\": \"<integer>\",\n  \"associations\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"clientToken\": \"<string>\",\n  \"deviceParameters\": \"<string>\",\n  \"jobToken\": \"<string>\",\n  \"tags\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df863d54-52c3-481b-aec4-c5b11b36a90a",
+              "name": "You do not have sufficient access to perform this action.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quantum-task"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"deviceArn\": \"<string>\",\n  \"outputS3Bucket\": \"<string>\",\n  \"outputS3KeyPrefix\": \"<string>\",\n  \"shots\": \"<integer>\",\n  \"associations\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"clientToken\": \"<string>\",\n  \"deviceParameters\": \"<string>\",\n  \"jobToken\": \"<string>\",\n  \"tags\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed9b2cfc-8c4b-4c30-8317-b6352080cc12",
+              "name": "The request was throttled. Please try again later.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quantum-task"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"deviceArn\": \"<string>\",\n  \"outputS3Bucket\": \"<string>\",\n  \"outputS3KeyPrefix\": \"<string>\",\n  \"shots\": \"<integer>\",\n  \"associations\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"clientToken\": \"<string>\",\n  \"deviceParameters\": \"<string>\",\n  \"jobToken\": \"<string>\",\n  \"tags\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea664a02-ac73-46de-aa3e-cf4192aa7b69",
+              "name": "The request processing has failed because of an internal error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quantum-task"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"deviceArn\": \"<string>\",\n  \"outputS3Bucket\": \"<string>\",\n  \"outputS3KeyPrefix\": \"<string>\",\n  \"shots\": \"<integer>\",\n  \"associations\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"clientToken\": \"<string>\",\n  \"deviceParameters\": \"<string>\",\n  \"jobToken\": \"<string>\",\n  \"tags\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9fbddefc-8ca0-4862-a915-e9a90d264127",
+          "name": "Get Quantum Task",
+          "request": {
+            "name": "Get Quantum Task",
+            "description": {
+              "content": "Retrieves the details of a quantum task.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "quantum-task",
+                ":quantumTaskArn"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "quantumTaskArn",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "84a212fd-24af-4a91-9b1c-36bf2c21949e",
+              "name": "Quantum task details returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quantum-task",
+                    ":quantumTaskArn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quantumTaskArn",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quantumTaskArn\": \"string\",\n  \"deviceArn\": \"string\",\n  \"shots\": 6949,\n  \"outputS3Bucket\": \"string\",\n  \"outputS3KeyPrefix\": \"string\",\n  \"status\": \"CREATED\",\n  \"failureReason\": \"string\",\n  \"createdAt\": \"2012-12-07T20:38:29.026Z\",\n  \"endedAt\": \"2026-07-08T07:54:51.874Z\",\n  \"tags\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e73993cd-e79d-4b85-ba28-92a486c009bf",
+              "name": "The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quantum-task",
+                    ":quantumTaskArn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quantumTaskArn",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8be5163f-b3d1-4505-926f-c6245b9f3aa5",
+              "name": "The request was throttled. Please try again later.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quantum-task",
+                    ":quantumTaskArn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quantumTaskArn",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d2985c3-200b-4b2f-9f5f-a5ef2a8d3628",
+          "name": "Cancel Quantum Task",
+          "request": {
+            "name": "Cancel Quantum Task",
+            "description": {
+              "content": "Cancels the specified task.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "quantum-task",
+                ":quantumTaskArn",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "quantumTaskArn",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c2a0f2fe-704e-4bf2-9418-ca601862ad49",
+              "name": "Quantum task cancellation initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quantum-task",
+                    ":quantumTaskArn",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quantumTaskArn",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cancellationStatus\": \"string\",\n  \"quantumTaskArn\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7be621a6-70db-40d3-99fd-b1d02e1da415",
+              "name": "The input fails to satisfy the constraints of an Amazon Braket operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quantum-task",
+                    ":quantumTaskArn",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quantumTaskArn",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21aec7c0-0fbb-460c-804e-b5c98c915213",
+              "name": "The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quantum-task",
+                    ":quantumTaskArn",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quantumTaskArn",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f64686c-a1d4-4e04-9724-d95d65f2e411",
+          "name": "Search Quantum Tasks",
+          "request": {
+            "name": "Search Quantum Tasks",
+            "description": {
+              "content": "Searches for tasks that match the specified filter values.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "quantum-tasks",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"filters\": [\n    {\n      \"name\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2c1cdf4c-036a-4147-9c4c-958227570a0d",
+              "name": "Quantum tasks matching filters returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quantum-tasks",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filters\": [\n    {\n      \"name\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quantumTasks\": [\n    {\n      \"quantumTaskArn\": \"string\",\n      \"deviceArn\": \"string\",\n      \"shots\": 8374,\n      \"outputS3Bucket\": \"string\",\n      \"outputS3KeyPrefix\": \"string\",\n      \"status\": \"QUEUED\",\n      \"failureReason\": \"string\",\n      \"createdAt\": \"1958-04-29T04:33:52.828Z\",\n      \"endedAt\": \"1992-03-07T07:14:44.021Z\",\n      \"tags\": {}\n    },\n    {\n      \"quantumTaskArn\": \"string\",\n      \"deviceArn\": \"string\",\n      \"shots\": 5142,\n      \"outputS3Bucket\": \"string\",\n      \"outputS3KeyPrefix\": \"string\",\n      \"status\": \"RUNNING\",\n      \"failureReason\": \"string\",\n      \"createdAt\": \"2000-07-01T18:42:57.126Z\",\n      \"endedAt\": \"1959-08-26T07:59:36.314Z\",\n      \"tags\": {}\n    }\n  ],\n  \"nextToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b3cb1067-d690-463e-9a82-4263fbec28d8",
+              "name": "The input fails to satisfy the constraints of an Amazon Braket operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quantum-tasks",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filters\": [\n    {\n      \"name\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a03d2921-1bc5-4358-8a8d-b9238d0dc598",
+              "name": "The request was throttled. Please try again later.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quantum-tasks",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filters\": [\n    {\n      \"name\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://braket.us-east-1.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "149529c6-3655-4295-ad03-a4d9d94d2fda",
+    "name": "Amazon Braket Devices Quantum Tasks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Amazon Braket is a fully managed quantum computing service that provides access to quantum processors, simulators, and hybrid quantum-classical compute through a unified API.",
+      "type": "text/plain"
+    }
+  }
+}

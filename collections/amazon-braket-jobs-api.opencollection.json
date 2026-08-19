@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon Braket Devices Jobs API",
+    "version": "2019-09-01"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://braket.us-east-1.amazonaws.com/job",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an Amazon Braket Hybrid Job. A hybrid job runs a classical algorithm with access to quantum devices for executing quantum tasks."
+        },
+        {
+          "info": {
+            "name": "Get Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://braket.us-east-1.amazonaws.com/job/:jobArn",
+            "params": [
+              {
+                "name": "jobArn",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "additionalAttributeNames",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves the details of a hybrid job."
+        },
+        {
+          "info": {
+            "name": "Cancel Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://braket.us-east-1.amazonaws.com/job/:jobArn/cancel",
+            "params": [
+              {
+                "name": "jobArn",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancels an Amazon Braket hybrid job."
+        },
+        {
+          "info": {
+            "name": "Search Jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://braket.us-east-1.amazonaws.com/jobs/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches for Amazon Braket hybrid jobs that match the specified filter values."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

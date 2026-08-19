@@ -1,0 +1,948 @@
+{
+  "item": [
+    {
+      "id": "b7ee8abf-4f57-4d0b-ad72-f950345e5b21",
+      "name": "Jobs",
+      "description": {
+        "content": "Manage hybrid quantum-classical jobs",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6cf7abf9-c264-4e77-9126-ef9d6f2b48de",
+          "name": "Create Job",
+          "request": {
+            "name": "Create Job",
+            "description": {
+              "content": "Creates an Amazon Braket Hybrid Job. A hybrid job runs a classical algorithm with access to quantum devices for executing quantum tasks.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "job"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"algorithmSpecification\": {\n    \"containerImage\": {\n      \"uri\": \"<string>\"\n    },\n    \"scriptModeConfig\": {\n      \"entryPoint\": \"<string>\",\n      \"s3Uri\": \"<string>\",\n      \"compressionType\": \"<string>\"\n    }\n  },\n  \"clientToken\": \"<string>\",\n  \"instanceConfig\": {\n    \"instanceCount\": \"<integer>\",\n    \"instanceType\": \"<string>\",\n    \"volumeSizeInGb\": \"<integer>\"\n  },\n  \"jobName\": \"<string>\",\n  \"outputDataConfig\": {\n    \"s3Path\": \"<string>\"\n  },\n  \"roleArn\": \"<string>\",\n  \"associations\": \"<array>\",\n  \"checkpointConfig\": \"<object>\",\n  \"deviceConfig\": {\n    \"device\": \"<string>\"\n  },\n  \"hyperParameters\": \"<object>\",\n  \"inputDataConfig\": \"<array>\",\n  \"stoppingCondition\": {\n    \"maxRuntimeInSeconds\": \"<integer>\"\n  },\n  \"tags\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "baef3794-5565-4f86-aba5-f1da993abee6",
+              "name": "Hybrid job created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"algorithmSpecification\": {\n    \"containerImage\": {\n      \"uri\": \"<string>\"\n    },\n    \"scriptModeConfig\": {\n      \"entryPoint\": \"<string>\",\n      \"s3Uri\": \"<string>\",\n      \"compressionType\": \"<string>\"\n    }\n  },\n  \"clientToken\": \"<string>\",\n  \"instanceConfig\": {\n    \"instanceCount\": \"<integer>\",\n    \"instanceType\": \"<string>\",\n    \"volumeSizeInGb\": \"<integer>\"\n  },\n  \"jobName\": \"<string>\",\n  \"outputDataConfig\": {\n    \"s3Path\": \"<string>\"\n  },\n  \"roleArn\": \"<string>\",\n  \"associations\": \"<array>\",\n  \"checkpointConfig\": \"<object>\",\n  \"deviceConfig\": {\n    \"device\": \"<string>\"\n  },\n  \"hyperParameters\": \"<object>\",\n  \"inputDataConfig\": \"<array>\",\n  \"stoppingCondition\": {\n    \"maxRuntimeInSeconds\": \"<integer>\"\n  },\n  \"tags\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobArn\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "43e19070-5674-45b7-9745-f6c65cbac0ef",
+              "name": "The input fails to satisfy the constraints of an Amazon Braket operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"algorithmSpecification\": {\n    \"containerImage\": {\n      \"uri\": \"<string>\"\n    },\n    \"scriptModeConfig\": {\n      \"entryPoint\": \"<string>\",\n      \"s3Uri\": \"<string>\",\n      \"compressionType\": \"<string>\"\n    }\n  },\n  \"clientToken\": \"<string>\",\n  \"instanceConfig\": {\n    \"instanceCount\": \"<integer>\",\n    \"instanceType\": \"<string>\",\n    \"volumeSizeInGb\": \"<integer>\"\n  },\n  \"jobName\": \"<string>\",\n  \"outputDataConfig\": {\n    \"s3Path\": \"<string>\"\n  },\n  \"roleArn\": \"<string>\",\n  \"associations\": \"<array>\",\n  \"checkpointConfig\": \"<object>\",\n  \"deviceConfig\": {\n    \"device\": \"<string>\"\n  },\n  \"hyperParameters\": \"<object>\",\n  \"inputDataConfig\": \"<array>\",\n  \"stoppingCondition\": {\n    \"maxRuntimeInSeconds\": \"<integer>\"\n  },\n  \"tags\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e33845ff-844e-46c7-86d1-628f1831045e",
+              "name": "An error occurred due to a conflict with the current state of the resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"algorithmSpecification\": {\n    \"containerImage\": {\n      \"uri\": \"<string>\"\n    },\n    \"scriptModeConfig\": {\n      \"entryPoint\": \"<string>\",\n      \"s3Uri\": \"<string>\",\n      \"compressionType\": \"<string>\"\n    }\n  },\n  \"clientToken\": \"<string>\",\n  \"instanceConfig\": {\n    \"instanceCount\": \"<integer>\",\n    \"instanceType\": \"<string>\",\n    \"volumeSizeInGb\": \"<integer>\"\n  },\n  \"jobName\": \"<string>\",\n  \"outputDataConfig\": {\n    \"s3Path\": \"<string>\"\n  },\n  \"roleArn\": \"<string>\",\n  \"associations\": \"<array>\",\n  \"checkpointConfig\": \"<object>\",\n  \"deviceConfig\": {\n    \"device\": \"<string>\"\n  },\n  \"hyperParameters\": \"<object>\",\n  \"inputDataConfig\": \"<array>\",\n  \"stoppingCondition\": {\n    \"maxRuntimeInSeconds\": \"<integer>\"\n  },\n  \"tags\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a4760b98-3fa8-45fd-a36c-b4d5cf3b3180",
+              "name": "The request was throttled. Please try again later.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"algorithmSpecification\": {\n    \"containerImage\": {\n      \"uri\": \"<string>\"\n    },\n    \"scriptModeConfig\": {\n      \"entryPoint\": \"<string>\",\n      \"s3Uri\": \"<string>\",\n      \"compressionType\": \"<string>\"\n    }\n  },\n  \"clientToken\": \"<string>\",\n  \"instanceConfig\": {\n    \"instanceCount\": \"<integer>\",\n    \"instanceType\": \"<string>\",\n    \"volumeSizeInGb\": \"<integer>\"\n  },\n  \"jobName\": \"<string>\",\n  \"outputDataConfig\": {\n    \"s3Path\": \"<string>\"\n  },\n  \"roleArn\": \"<string>\",\n  \"associations\": \"<array>\",\n  \"checkpointConfig\": \"<object>\",\n  \"deviceConfig\": {\n    \"device\": \"<string>\"\n  },\n  \"hyperParameters\": \"<object>\",\n  \"inputDataConfig\": \"<array>\",\n  \"stoppingCondition\": {\n    \"maxRuntimeInSeconds\": \"<integer>\"\n  },\n  \"tags\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f119662-457a-4bb7-82d5-aeabc4f0cdfd",
+          "name": "Get Job",
+          "request": {
+            "name": "Get Job",
+            "description": {
+              "content": "Retrieves the details of a hybrid job.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "job",
+                ":jobArn"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "additionalAttributeNames",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "additionalAttributeNames",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobArn",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "67bc9540-bb85-4bee-972e-1b95cc431398",
+              "name": "Job details returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job",
+                    ":jobArn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additionalAttributeNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "additionalAttributeNames",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobArn",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobArn\": \"string\",\n  \"jobName\": \"string\",\n  \"status\": \"QUEUED\",\n  \"failureReason\": \"string\",\n  \"createdAt\": \"1975-01-14T08:56:11.697Z\",\n  \"endedAt\": \"1957-09-04T23:55:17.967Z\",\n  \"startedAt\": \"1963-03-13T13:36:54.163Z\",\n  \"billableDuration\": 7902\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70649c27-adc4-4b4a-afb9-6af2445af8ca",
+              "name": "The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job",
+                    ":jobArn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additionalAttributeNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "additionalAttributeNames",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobArn",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8cea92e5-4f30-49d8-87c0-9a5884c65c4c",
+              "name": "The request was throttled. Please try again later.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job",
+                    ":jobArn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additionalAttributeNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "additionalAttributeNames",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobArn",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c599364e-fc27-4364-bc15-31fafc1a377f",
+          "name": "Cancel Job",
+          "request": {
+            "name": "Cancel Job",
+            "description": {
+              "content": "Cancels an Amazon Braket hybrid job.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "job",
+                ":jobArn",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobArn",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2db31c19-2adb-4ce9-b183-fac9abd6f960",
+              "name": "Job cancellation initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job",
+                    ":jobArn",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobArn",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cancellationStatus\": \"string\",\n  \"jobArn\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a4f2f89-38cc-45de-a998-91060a54ff6a",
+              "name": "The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job",
+                    ":jobArn",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobArn",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "56575ade-d764-4fb5-b630-2068bc157ebc",
+              "name": "An error occurred due to a conflict with the current state of the resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job",
+                    ":jobArn",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobArn",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c962876d-13f4-473a-825e-b52bb28eef58",
+          "name": "Search Jobs",
+          "request": {
+            "name": "Search Jobs",
+            "description": {
+              "content": "Searches for Amazon Braket hybrid jobs that match the specified filter values.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "jobs",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"filters\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ee0490ab-883c-4fe0-8ceb-46524062c5fc",
+              "name": "Jobs matching filters returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filters\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobs\": [\n    {\n      \"jobArn\": \"string\",\n      \"jobName\": \"string\",\n      \"status\": \"QUEUED\",\n      \"failureReason\": \"string\",\n      \"createdAt\": \"1970-10-21T10:55:28.312Z\",\n      \"endedAt\": \"2014-12-09T14:46:21.995Z\",\n      \"startedAt\": \"1960-11-06T06:57:19.854Z\",\n      \"billableDuration\": 6265\n    },\n    {\n      \"jobArn\": \"string\",\n      \"jobName\": \"string\",\n      \"status\": \"QUEUED\",\n      \"failureReason\": \"string\",\n      \"createdAt\": \"2014-03-05T03:13:56.917Z\",\n      \"endedAt\": \"1970-11-01T15:28:28.610Z\",\n      \"startedAt\": \"1972-09-19T20:08:38.090Z\",\n      \"billableDuration\": 675\n    }\n  ],\n  \"nextToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4239426-62b6-4f91-9b8b-2debf40f6241",
+              "name": "The input fails to satisfy the constraints of an Amazon Braket operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filters\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e82a0a92-a7a1-47dc-8b8b-dba4e6b076e3",
+              "name": "The request was throttled. Please try again later.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filters\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://braket.us-east-1.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "786dd14a-c305-4f5a-a75a-282bc16d8cf7",
+    "name": "Amazon Braket Devices Jobs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Amazon Braket is a fully managed quantum computing service that provides access to quantum processors, simulators, and hybrid quantum-classical compute through a unified API.",
+      "type": "text/plain"
+    }
+  }
+}

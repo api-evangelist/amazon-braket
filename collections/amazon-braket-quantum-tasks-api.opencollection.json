@@ -1,0 +1,96 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon Braket Devices Quantum Tasks API",
+    "version": "2019-09-01"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Quantum Tasks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Quantum Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://braket.us-east-1.amazonaws.com/quantum-task",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a quantum task. A quantum task is a circuit or problem that you want to run on a quantum device. Amazon Braket queues the task until the device is available and returns results to the specified Amazon S3 location."
+        },
+        {
+          "info": {
+            "name": "Get Quantum Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://braket.us-east-1.amazonaws.com/quantum-task/:quantumTaskArn",
+            "params": [
+              {
+                "name": "quantumTaskArn",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves the details of a quantum task."
+        },
+        {
+          "info": {
+            "name": "Cancel Quantum Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://braket.us-east-1.amazonaws.com/quantum-task/:quantumTaskArn/cancel",
+            "params": [
+              {
+                "name": "quantumTaskArn",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancels the specified task."
+        },
+        {
+          "info": {
+            "name": "Search Quantum Tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://braket.us-east-1.amazonaws.com/quantum-tasks/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches for tasks that match the specified filter values."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
