@@ -80,6 +80,8 @@ apis:
   humanURL: https://aws.amazon.com/braket/
   baseURL: https://braket.us-east-1.amazonaws.com
   tags:
+  - Job
+  tags_raw:
   - Jobs
   properties:
   - type: OpenAPI
