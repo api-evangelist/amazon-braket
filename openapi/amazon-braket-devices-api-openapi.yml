@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon Braket Devices API
   description: Amazon Braket is a fully managed quantum computing service that provides access to quantum processors, simulators, and hybrid quantum-classical compute through a unified API.
@@ -68,7 +68,35 @@ paths:
         '429':
           $ref: '#/components/responses/ThrottlingException'
 components:
+  responses:
+    ValidationException:
+      description: The input fails to satisfy the constraints of an Amazon Braket operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ResourceNotFoundException:
+      description: The requested resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ThrottlingException:
+      description: The request was throttled. Please try again later.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    SearchDevicesResponse:
+      type: object
+      properties:
+        devices:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device'
+        nextToken:
+          type: string
     Device:
       type: object
       properties:
@@ -115,34 +143,6 @@ components:
       properties:
         message:
           type: string
-    SearchDevicesResponse:
-      type: object
-      properties:
-        devices:
-          type: array
-          items:
-            $ref: '#/components/schemas/Device'
-        nextToken:
-          type: string
-  responses:
-    ResourceNotFoundException:
-      description: The requested resource does not exist.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ValidationException:
-      description: The input fails to satisfy the constraints of an Amazon Braket operation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ThrottlingException:
-      description: The request was throttled. Please try again later.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     aws_iam:
       type: apiKey
