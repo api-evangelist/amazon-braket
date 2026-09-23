@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Amazon Braket Devices Jobs API
+  title: Amazon Braket Jobs API
   description: Amazon Braket is a fully managed quantum computing service that provides access to quantum processors, simulators, and hybrid quantum-classical compute through a unified API.
   version: '2019-09-01'
   contact:
@@ -133,12 +133,6 @@ paths:
           $ref: '#/components/responses/ThrottlingException'
 components:
   responses:
-    ValidationException:
-      description: The input fails to satisfy the constraints of an Amazon Braket operation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     ConflictException:
       description: An error occurred due to a conflict with the current state of the resource.
       content:
@@ -157,6 +151,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+    ValidationException:
+      description: The input fails to satisfy the constraints of an Amazon Braket operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
     SearchJobsRequest:
       type: object
@@ -168,6 +168,11 @@ components:
         maxResults:
           type: integer
         nextToken:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        message:
           type: string
     SearchJobsResponse:
       type: object
@@ -207,11 +212,6 @@ components:
           format: date-time
         billableDuration:
           type: integer
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
     CreateJobRequest:
       type: object
       required:

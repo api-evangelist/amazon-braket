@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Amazon Braket Devices Spending Limits API
+  title: Amazon Braket Spending Limits API
   description: Amazon Braket is a fully managed quantum computing service that provides access to quantum processors, simulators, and hybrid quantum-classical compute through a unified API.
   version: '2019-09-01'
   contact:
@@ -123,6 +123,12 @@ paths:
         '200':
           description: Spending limit updated
 components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
   responses:
     ResourceNotFoundException:
       description: The requested resource does not exist.
@@ -136,12 +142,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-  schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
   securitySchemes:
     aws_iam:
       type: apiKey

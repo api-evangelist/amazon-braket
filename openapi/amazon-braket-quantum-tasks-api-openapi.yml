@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Amazon Braket Devices Quantum Tasks API
+  title: Amazon Braket Quantum Tasks API
   description: Amazon Braket is a fully managed quantum computing service that provides access to quantum processors, simulators, and hybrid quantum-classical compute through a unified API.
   version: '2019-09-01'
   contact:
@@ -137,39 +137,20 @@ paths:
           $ref: '#/components/responses/ThrottlingException'
 components:
   schemas:
-    QuantumTask:
+    ErrorResponse:
       type: object
       properties:
-        quantumTaskArn:
+        message:
           type: string
-        deviceArn:
+    SearchQuantumTasksResponse:
+      type: object
+      properties:
+        quantumTasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuantumTask'
+        nextToken:
           type: string
-        shots:
-          type: integer
-        outputS3Bucket:
-          type: string
-        outputS3KeyPrefix:
-          type: string
-        status:
-          type: string
-          enum:
-          - CREATED
-          - QUEUED
-          - RUNNING
-          - COMPLETED
-          - FAILED
-          - CANCELLING
-          - CANCELLED
-        failureReason:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        endedAt:
-          type: string
-          format: date-time
-        tags:
-          type: object
     CreateQuantumTaskRequest:
       type: object
       required:
@@ -205,6 +186,44 @@ components:
           description: Number of times to run the quantum circuit
         tags:
           type: object
+    CreateQuantumTaskResponse:
+      type: object
+      properties:
+        quantumTaskArn:
+          type: string
+    QuantumTask:
+      type: object
+      properties:
+        quantumTaskArn:
+          type: string
+        deviceArn:
+          type: string
+        shots:
+          type: integer
+        outputS3Bucket:
+          type: string
+        outputS3KeyPrefix:
+          type: string
+        status:
+          type: string
+          enum:
+          - CREATED
+          - QUEUED
+          - RUNNING
+          - COMPLETED
+          - FAILED
+          - CANCELLING
+          - CANCELLED
+        failureReason:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        endedAt:
+          type: string
+          format: date-time
+        tags:
+          type: object
     SearchQuantumTasksRequest:
       type: object
       properties:
@@ -225,34 +244,9 @@ components:
           type: integer
         nextToken:
           type: string
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-    CreateQuantumTaskResponse:
-      type: object
-      properties:
-        quantumTaskArn:
-          type: string
-    SearchQuantumTasksResponse:
-      type: object
-      properties:
-        quantumTasks:
-          type: array
-          items:
-            $ref: '#/components/schemas/QuantumTask'
-        nextToken:
-          type: string
   responses:
-    ValidationException:
-      description: The input fails to satisfy the constraints of an Amazon Braket operation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    InternalServiceException:
-      description: The request processing has failed because of an internal error.
+    AccessDeniedException:
+      description: You do not have sufficient access to perform this action.
       content:
         application/json:
           schema:
@@ -263,14 +257,20 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    AccessDeniedException:
-      description: You do not have sufficient access to perform this action.
+    InternalServiceException:
+      description: The request processing has failed because of an internal error.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     ThrottlingException:
       description: The request was throttled. Please try again later.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ValidationException:
+      description: The input fails to satisfy the constraints of an Amazon Braket operation.
       content:
         application/json:
           schema:

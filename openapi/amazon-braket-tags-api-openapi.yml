@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Amazon Braket Devices Tags API
+  title: Amazon Braket Tags API
   description: Amazon Braket is a fully managed quantum computing service that provides access to quantum processors, simulators, and hybrid quantum-classical compute through a unified API.
   version: '2019-09-01'
   contact:
