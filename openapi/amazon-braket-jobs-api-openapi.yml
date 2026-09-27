@@ -133,14 +133,14 @@ paths:
           $ref: '#/components/responses/ThrottlingException'
 components:
   responses:
-    ConflictException:
-      description: An error occurred due to a conflict with the current state of the resource.
+    ValidationException:
+      description: The input fails to satisfy the constraints of an Amazon Braket operation.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    ResourceNotFoundException:
-      description: The requested resource does not exist.
+    ConflictException:
+      description: An error occurred due to a conflict with the current state of the resource.
       content:
         application/json:
           schema:
@@ -151,29 +151,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    ValidationException:
-      description: The input fails to satisfy the constraints of an Amazon Braket operation.
+    ResourceNotFoundException:
+      description: The requested resource does not exist.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    SearchJobsRequest:
-      type: object
-      properties:
-        filters:
-          type: array
-          items:
-            type: object
-        maxResults:
-          type: integer
-        nextToken:
-          type: string
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
     SearchJobsResponse:
       type: object
       properties:
@@ -182,6 +166,11 @@ components:
           items:
             $ref: '#/components/schemas/Job'
         nextToken:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        message:
           type: string
     Job:
       type: object
@@ -279,6 +268,17 @@ components:
               type: integer
         tags:
           type: object
+    SearchJobsRequest:
+      type: object
+      properties:
+        filters:
+          type: array
+          items:
+            type: object
+        maxResults:
+          type: integer
+        nextToken:
+          type: string
   securitySchemes:
     aws_iam:
       type: apiKey

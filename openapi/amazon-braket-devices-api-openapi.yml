@@ -92,20 +92,6 @@ components:
         deviceCapabilities:
           type: string
           description: JSON string with device capabilities
-    SearchDevicesResponse:
-      type: object
-      properties:
-        devices:
-          type: array
-          items:
-            $ref: '#/components/schemas/Device'
-        nextToken:
-          type: string
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
     SearchDevicesRequest:
       type: object
       properties:
@@ -124,15 +110,29 @@ components:
           type: integer
         nextToken:
           type: string
+    SearchDevicesResponse:
+      type: object
+      properties:
+        devices:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device'
+        nextToken:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
   responses:
-    ResourceNotFoundException:
-      description: The requested resource does not exist.
+    ThrottlingException:
+      description: The request was throttled. Please try again later.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    ThrottlingException:
-      description: The request was throttled. Please try again later.
+    ResourceNotFoundException:
+      description: The requested resource does not exist.
       content:
         application/json:
           schema:
