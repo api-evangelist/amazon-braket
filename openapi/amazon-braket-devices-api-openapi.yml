@@ -69,6 +69,11 @@ paths:
           $ref: '#/components/responses/ThrottlingException'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
     Device:
       type: object
       properties:
@@ -92,6 +97,15 @@ components:
         deviceCapabilities:
           type: string
           description: JSON string with device capabilities
+    SearchDevicesResponse:
+      type: object
+      properties:
+        devices:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device'
+        nextToken:
+          type: string
     SearchDevicesRequest:
       type: object
       properties:
@@ -110,20 +124,6 @@ components:
           type: integer
         nextToken:
           type: string
-    SearchDevicesResponse:
-      type: object
-      properties:
-        devices:
-          type: array
-          items:
-            $ref: '#/components/schemas/Device'
-        nextToken:
-          type: string
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
   responses:
     ThrottlingException:
       description: The request was throttled. Please try again later.
@@ -131,14 +131,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    ResourceNotFoundException:
-      description: The requested resource does not exist.
+    ValidationException:
+      description: The input fails to satisfy the constraints of an Amazon Braket operation.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    ValidationException:
-      description: The input fails to satisfy the constraints of an Amazon Braket operation.
+    ResourceNotFoundException:
+      description: The requested resource does not exist.
       content:
         application/json:
           schema:
