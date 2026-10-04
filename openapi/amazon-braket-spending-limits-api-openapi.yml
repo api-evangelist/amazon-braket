@@ -123,25 +123,25 @@ paths:
         '200':
           description: Spending limit updated
 components:
-  schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
   responses:
-    ValidationException:
-      description: The input fails to satisfy the constraints of an Amazon Braket operation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     ResourceNotFoundException:
       description: The requested resource does not exist.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+    ValidationException:
+      description: The input fails to satisfy the constraints of an Amazon Braket operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
   securitySchemes:
     aws_iam:
       type: apiKey

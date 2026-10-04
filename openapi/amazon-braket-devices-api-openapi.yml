@@ -68,12 +68,26 @@ paths:
         '429':
           $ref: '#/components/responses/ThrottlingException'
 components:
+  responses:
+    ThrottlingException:
+      description: The request was throttled. Please try again later.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ValidationException:
+      description: The input fails to satisfy the constraints of an Amazon Braket operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ResourceNotFoundException:
+      description: The requested resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
     Device:
       type: object
       properties:
@@ -106,6 +120,11 @@ components:
             $ref: '#/components/schemas/Device'
         nextToken:
           type: string
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
     SearchDevicesRequest:
       type: object
       properties:
@@ -124,25 +143,6 @@ components:
           type: integer
         nextToken:
           type: string
-  responses:
-    ThrottlingException:
-      description: The request was throttled. Please try again later.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ValidationException:
-      description: The input fails to satisfy the constraints of an Amazon Braket operation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ResourceNotFoundException:
-      description: The requested resource does not exist.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     aws_iam:
       type: apiKey

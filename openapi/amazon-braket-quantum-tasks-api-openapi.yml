@@ -136,17 +136,85 @@ paths:
         '429':
           $ref: '#/components/responses/ThrottlingException'
 components:
+  responses:
+    ThrottlingException:
+      description: The request was throttled. Please try again later.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ValidationException:
+      description: The input fails to satisfy the constraints of an Amazon Braket operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ResourceNotFoundException:
+      description: The requested resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalServiceException:
+      description: The request processing has failed because of an internal error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    AccessDeniedException:
+      description: You do not have sufficient access to perform this action.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
     CreateQuantumTaskResponse:
       type: object
       properties:
         quantumTaskArn:
           type: string
+    SearchQuantumTasksResponse:
+      type: object
+      properties:
+        quantumTasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuantumTask'
+        nextToken:
+          type: string
+    QuantumTask:
+      type: object
+      properties:
+        quantumTaskArn:
+          type: string
+        deviceArn:
+          type: string
+        shots:
+          type: integer
+        outputS3Bucket:
+          type: string
+        outputS3KeyPrefix:
+          type: string
+        status:
+          type: string
+          enum:
+          - CREATED
+          - QUEUED
+          - RUNNING
+          - COMPLETED
+          - FAILED
+          - CANCELLING
+          - CANCELLED
+        failureReason:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        endedAt:
+          type: string
+          format: date-time
+        tags:
+          type: object
     SearchQuantumTasksRequest:
       type: object
       properties:
@@ -166,6 +234,11 @@ components:
         maxResults:
           type: integer
         nextToken:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        message:
           type: string
     CreateQuantumTaskRequest:
       type: object
@@ -202,79 +275,6 @@ components:
           description: Number of times to run the quantum circuit
         tags:
           type: object
-    QuantumTask:
-      type: object
-      properties:
-        quantumTaskArn:
-          type: string
-        deviceArn:
-          type: string
-        shots:
-          type: integer
-        outputS3Bucket:
-          type: string
-        outputS3KeyPrefix:
-          type: string
-        status:
-          type: string
-          enum:
-          - CREATED
-          - QUEUED
-          - RUNNING
-          - COMPLETED
-          - FAILED
-          - CANCELLING
-          - CANCELLED
-        failureReason:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        endedAt:
-          type: string
-          format: date-time
-        tags:
-          type: object
-    SearchQuantumTasksResponse:
-      type: object
-      properties:
-        quantumTasks:
-          type: array
-          items:
-            $ref: '#/components/schemas/QuantumTask'
-        nextToken:
-          type: string
-  responses:
-    InternalServiceException:
-      description: The request processing has failed because of an internal error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    AccessDeniedException:
-      description: You do not have sufficient access to perform this action.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ThrottlingException:
-      description: The request was throttled. Please try again later.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ValidationException:
-      description: The input fails to satisfy the constraints of an Amazon Braket operation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ResourceNotFoundException:
-      description: The requested resource does not exist.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     aws_iam:
       type: apiKey
