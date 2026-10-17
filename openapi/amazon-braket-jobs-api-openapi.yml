@@ -132,61 +132,7 @@ paths:
         '429':
           $ref: '#/components/responses/ThrottlingException'
 components:
-  responses:
-    ThrottlingException:
-      description: The request was throttled. Please try again later.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ValidationException:
-      description: The input fails to satisfy the constraints of an Amazon Braket operation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ResourceNotFoundException:
-      description: The requested resource does not exist.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ConflictException:
-      description: An error occurred due to a conflict with the current state of the resource.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    Job:
-      type: object
-      properties:
-        jobArn:
-          type: string
-        jobName:
-          type: string
-        status:
-          type: string
-          enum:
-          - QUEUED
-          - RUNNING
-          - COMPLETED
-          - FAILED
-          - CANCELLING
-          - CANCELLED
-        failureReason:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        endedAt:
-          type: string
-          format: date-time
-        startedAt:
-          type: string
-          format: date-time
-        billableDuration:
-          type: integer
     CreateJobRequest:
       type: object
       required:
@@ -259,15 +205,35 @@ components:
       properties:
         message:
           type: string
-    SearchJobsResponse:
+    Job:
       type: object
       properties:
-        jobs:
-          type: array
-          items:
-            $ref: '#/components/schemas/Job'
-        nextToken:
+        jobArn:
           type: string
+        jobName:
+          type: string
+        status:
+          type: string
+          enum:
+          - QUEUED
+          - RUNNING
+          - COMPLETED
+          - FAILED
+          - CANCELLING
+          - CANCELLED
+        failureReason:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        endedAt:
+          type: string
+          format: date-time
+        startedAt:
+          type: string
+          format: date-time
+        billableDuration:
+          type: integer
     SearchJobsRequest:
       type: object
       properties:
@@ -279,6 +245,40 @@ components:
           type: integer
         nextToken:
           type: string
+    SearchJobsResponse:
+      type: object
+      properties:
+        jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'
+        nextToken:
+          type: string
+  responses:
+    ConflictException:
+      description: An error occurred due to a conflict with the current state of the resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ThrottlingException:
+      description: The request was throttled. Please try again later.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ValidationException:
+      description: The input fails to satisfy the constraints of an Amazon Braket operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ResourceNotFoundException:
+      description: The requested resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     aws_iam:
       type: apiKey

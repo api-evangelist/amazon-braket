@@ -68,58 +68,7 @@ paths:
         '429':
           $ref: '#/components/responses/ThrottlingException'
 components:
-  responses:
-    ThrottlingException:
-      description: The request was throttled. Please try again later.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ValidationException:
-      description: The input fails to satisfy the constraints of an Amazon Braket operation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ResourceNotFoundException:
-      description: The requested resource does not exist.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    Device:
-      type: object
-      properties:
-        deviceArn:
-          type: string
-        deviceName:
-          type: string
-        deviceType:
-          type: string
-          enum:
-          - QPU
-          - SIMULATOR
-        deviceStatus:
-          type: string
-          enum:
-          - ONLINE
-          - OFFLINE
-          - RETIRED
-        providerName:
-          type: string
-        deviceCapabilities:
-          type: string
-          description: JSON string with device capabilities
-    SearchDevicesResponse:
-      type: object
-      properties:
-        devices:
-          type: array
-          items:
-            $ref: '#/components/schemas/Device'
-        nextToken:
-          type: string
     ErrorResponse:
       type: object
       properties:
@@ -143,6 +92,57 @@ components:
           type: integer
         nextToken:
           type: string
+    SearchDevicesResponse:
+      type: object
+      properties:
+        devices:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device'
+        nextToken:
+          type: string
+    Device:
+      type: object
+      properties:
+        deviceArn:
+          type: string
+        deviceName:
+          type: string
+        deviceType:
+          type: string
+          enum:
+          - QPU
+          - SIMULATOR
+        deviceStatus:
+          type: string
+          enum:
+          - ONLINE
+          - OFFLINE
+          - RETIRED
+        providerName:
+          type: string
+        deviceCapabilities:
+          type: string
+          description: JSON string with device capabilities
+  responses:
+    ValidationException:
+      description: The input fails to satisfy the constraints of an Amazon Braket operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ThrottlingException:
+      description: The request was throttled. Please try again later.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ResourceNotFoundException:
+      description: The requested resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     aws_iam:
       type: apiKey
