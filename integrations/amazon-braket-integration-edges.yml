@@ -1,0 +1,73 @@
+edges:
+- partner_name: IonQ
+  partner: ionq
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://aws.amazon.com/braket/quantum-computers/ionq/
+  partner_domain: ionq.com
+  category: quantum hardware provider on the cloud
+  devices:
+  - Forte-1
+  - Forte-Enterprise-1
+  contract_reference:
+    register: Amazon Braket supported devices (docs.aws.amazon.com braket-devices + aws.amazon.com/braket/quantum-computers)
+    spec_file: null
+    role: amazon-braket-hardware-provider
+    registered_name: IonQ
+    matched_domain: ionq.com
+    matched_by: domain
+    domain_source: braket provider page own-site link
+    signal_note: a hardware provider resold through a quantum cloud is DISTRIBUTION (cloud-marketplace rule), kept
+      out of position shares; devices are context, never counted
+    detected_by: sweep-quantum-computing.py
+    detected: '2026-10-20'
+  detected_by: sweep-quantum-computing.py
+  detected: '2026-10-20'
+- partner_name: QuEra
+  partner: quera
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://aws.amazon.com/braket/quantum-computers/quera/
+  partner_domain: quera.com
+  category: quantum hardware provider on the cloud
+  devices:
+  - Aquila
+  contract_reference:
+    register: Amazon Braket supported devices (docs.aws.amazon.com braket-devices + aws.amazon.com/braket/quantum-computers)
+    spec_file: null
+    role: amazon-braket-hardware-provider
+    registered_name: QuEra
+    matched_domain: quera.com
+    matched_by: domain+name-among-holders
+    domain_source: braket provider page own-site link
+    signal_note: a hardware provider resold through a quantum cloud is DISTRIBUTION (cloud-marketplace rule), kept
+      out of position shares; devices are context, never counted
+    detected_by: sweep-quantum-computing.py
+    detected: '2026-10-20'
+  detected_by: sweep-quantum-computing.py
+  detected: '2026-10-20'
+marketplace_apps:
+- marketplace: own
+  channel: partner-built
+  app: amazon-braket
+  url: https://docs.aws.amazon.com/braket/latest/developerguide/braket-devices.html
+  app_count: 5
+  adapter: sweep-quantum-computing.py:amazon-braket
+  listed: 2
+  note: only domain-linked providers are written; the platform's own devices / functions are counted, not written
+generated: '2026-10-20'
+method: searched
+source:
+- https://docs.aws.amazon.com/braket/latest/developerguide/braket-devices.html
+- https://aws.amazon.com/braket/quantum-computers/
+checked:
+- https://aws.amazon.com/braket/quantum-computers/
+- https://docs.aws.amazon.com/braket/latest/developerguide/braket-devices.html
