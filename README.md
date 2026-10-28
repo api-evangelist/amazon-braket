@@ -64,85 +64,159 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Amazon Braket is a fully managed quantum computing service that helps researchers and developers explore and build quantum algorithms, test them on quantum circuit simulators, and run them on different quantum hardware technologies. Braket provides access to multiple quantum processors from IonQ, Rigetti, QuEra, Oxford Quantum Circuits, and IQM, as well as high-performance simulators.
+Amazon Braket is a fully managed quantum computing service that helps researchers and developers explore and build quantum algorithms, test them on quantum circuit simulators, and run them on different quantum hardware technologies. Braket provides access to multiple quantum processors from IonQ, Rigetti, QuEra, Oxford Quantum Circuits, and IQM, as well as high-performance quantum circuit simulators. It supports hybrid quantum-classical algorithms through Braket Hybrid Jobs.
 
-**Human URL:** [https://aws.amazon.com/braket/](https://aws.amazon.com/braket/)
+**Areas:** Quantum Computing · Quantum Hardware · Hybrid Quantum-Classical · QPU · Quantum Simulation · AWS · Amazon Web Services · Research · HPC
 
-**API Reference:** [https://docs.aws.amazon.com/braket/latest/APIReference/](https://docs.aws.amazon.com/braket/latest/APIReference/)
+## Amazon Braket on APIs.io
 
-## APIs
+Everything profiled for Amazon Braket is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/amazon-braket/](https://apis.io/providers/amazon-braket/)** — or go straight to one of the APIs or properties below.
 
-### Amazon Braket API
-Programmatic access to quantum task execution, device discovery, hybrid job management, and spending limit control.
+### APIs (5)
 
-**Base URL:** `https://braket.us-east-1.amazonaws.com`
+- [Amazon Braket Devices API](https://apis.io/apis/amazon-braket/amazon-braket-devices-api/) — Discover and retrieve details about quantum devices
+- [Amazon Braket Jobs API](https://apis.io/apis/amazon-braket/amazon-braket-jobs-api/) — Manage hybrid quantum-classical jobs
+- [Amazon Braket Quantum Tasks API](https://apis.io/apis/amazon-braket/amazon-braket-quantum-tasks-api/) — Submit and manage quantum tasks on QPUs and simulators
+- [Amazon Braket Spending Limits API](https://apis.io/apis/amazon-braket/amazon-braket-spending-limits-api/) — Control QPU and simulator spending
+- [Amazon Braket Tags API](https://apis.io/apis/amazon-braket/amazon-braket-tags-api/) — Manage resource tags
 
-#### Key Operations
+### Published properties
 
-| Operation | Description |
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [amazon-braket](https://apis.io/servers/amazon-braket/amazon-braket/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Amazon Braket Agentic Access](https://apis.io/agentic-access/amazon-braket/amazon-braket-agentic-access/)
+
+#### JSON Schema (1)
+
+The data models the API reads and writes.
+
+- [Quantum Task](https://apis.io/schemas/amazon-braket/braket-task/)
+
+#### JSON Structure (1)
+
+Data models expressed in JSON Structure.
+
+- [Braket Resource Structure](https://apis.io/json-structure/amazon-braket/braket-resource-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [context Context](https://apis.io/jsonld/amazon-braket/context/)
+
+#### Examples (3)
+
+Example requests and responses.
+
+- [Create Hybrid Job Example](https://apis.io/examples/amazon-braket/create-hybrid-job-example/)
+- [Create Quantum Task Example](https://apis.io/examples/amazon-braket/create-quantum-task-example/)
+- [Search Devices Example](https://apis.io/examples/amazon-braket/search-devices-example/)
+
+#### Collections (5)
+
+Postman and Open Collection request collections.
+
+- [Amazon Braket Devices API](https://apis.io/collections/amazon-braket/open-amazon-braket-devices-api/)
+- [Amazon Braket Devices Jobs API](https://apis.io/collections/amazon-braket/open-amazon-braket-jobs-api/)
+- [Amazon Braket Devices Quantum Tasks API](https://apis.io/collections/amazon-braket/open-amazon-braket-quantum-tasks-api/)
+- [Amazon Braket Devices Spending Limits API](https://apis.io/collections/amazon-braket/open-amazon-braket-spending-limits-api/)
+- [Amazon Braket Devices Tags API](https://apis.io/collections/amazon-braket/open-amazon-braket-tags-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Amazon Braket Api Overlay](https://apis.io/overlays/amazon-braket/amazon-braket-api-overlay/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Amazon Braket — jsonschema rules](https://apis.io/rules/amazon-braket/amazon-braket-jsonschema-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Amazon Braket Authentication](https://apis.io/security/amazon-braket/amazon-braket-authentication/)
+- [Amazon Braket Domain Security](https://apis.io/security/amazon-braket/amazon-braket-domain-security/)
+- [Amazon Braket Trust Center](https://apis.io/security/amazon-braket/amazon-braket-trust-center/)
+- [Amazon Braket Vulnerability Disclosure](https://apis.io/security/amazon-braket/amazon-braket-vulnerability-disclosure/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://aws.amazon.com/braket/)
+- [Documentation](https://docs.aws.amazon.com/braket/)
+- [Getting started](https://aws.amazon.com/braket/getting-started/)
+- [Pricing](https://aws.amazon.com/braket/pricing/)
+- [Blog](https://aws.amazon.com/blogs/quantum-computing/)
+- [Terms of service](https://aws.amazon.com/service-terms/)
+- [Privacy policy](https://aws.amazon.com/privacy/)
+- [GitHub](https://github.com/amazon-braket)
+
+## API Evangelist rating
+
+**Kin Score 50.5** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
 |---|---|
-| CreateQuantumTask | Submit a quantum circuit to a QPU or simulator |
-| GetQuantumTask | Monitor quantum task status and retrieve results |
-| SearchQuantumTasks | Search quantum tasks by filters |
-| CancelQuantumTask | Cancel a queued or running task |
-| SearchDevices | Discover available QPU and simulator devices |
-| GetDevice | Get device details and capabilities |
-| CreateJob | Create a hybrid quantum-classical job |
-| GetJob | Monitor hybrid job status |
-| CancelJob | Cancel a running hybrid job |
-| CreateSpendingLimit | Set QPU/simulator usage spending limits |
+| Discoverability | 73.2 |
+| Contract quality | 64.1 |
+| Contract governance | 28.0 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 59.5 |
+| Access clarity | 39.5 |
 
-## Features
+**Agent readiness 22.6** — agent-aware
 
-- **Quantum Task Execution** — Submit circuits to QPUs or simulators with results in S3
-- **Hybrid Jobs** — Managed classical-quantum workloads with priority QPU access
-- **Multiple QPU Providers** — IonQ, Rigetti, QuEra, Oxford Quantum Circuits, IQM via unified API
-- **Quantum Simulators** — SV1 (state vector), DM1 (density matrix), TN1 (tensor network)
-- **Device Discovery** — Search and filter available devices by type, status, and provider
-- **Spending Limits** — Cost control for QPU and simulator usage
-- **Pulse Control** — Low-level hardware access for advanced experimentation
-
-## Use Cases
-
-- **Quantum Algorithm Research** — Develop and test algorithms on simulators before QPU runs
-- **Quantum Chemistry** — Molecular simulation with VQE hybrid algorithms
-- **Quantum Optimization** — Combinatorial optimization with QAOA
-- **Quantum Machine Learning** — Hybrid quantum-classical ML workflows
-
-## QPU Providers
-
-| Provider | Technology |
+| Agent-readiness dimension | Result |
 |---|---|
-| IonQ | Trapped Ion (Aria 1, Aria 2, Forte 1) |
-| Rigetti | Superconducting (Ankaa-3) |
-| QuEra | Neutral Atom (Aquila) |
-| Oxford Quantum Circuits | Superconducting (Lucy) |
-| IQM | Superconducting (Garnet) |
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
 
-## Artifacts
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
 
-| Type | URL |
-|---|---|
-| OpenAPI Spec | [openapi/amazon-braket-api-openapi.yml](openapi/amazon-braket-api-openapi.yml) |
-| JSON Schema (Task) | [json-schema/braket-task-schema.json](json-schema/braket-task-schema.json) |
-| JSON Structure | [json-structure/braket-resource-structure.json](json-structure/braket-resource-structure.json) |
-| JSON-LD Context | [json-ld/context.jsonld](json-ld/context.jsonld) |
-| Spectral Ruleset | [spectral/ruleset.yml](spectral/ruleset.yml) |
-| Capabilities | [capabilities/capabilities.yml](capabilities/capabilities.yml) |
-| Vocabulary | [vocabulary/vocabulary.yml](vocabulary/vocabulary.yml) |
-| Examples | [examples/](examples/) |
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/amazon-braket/](https://apis.io/providers/amazon-braket/).
 
-## Common Properties
+## How this profile is made
 
-| Type | URL |
-|---|---|
-| Documentation | [https://docs.aws.amazon.com/braket/](https://docs.aws.amazon.com/braket/) |
-| SDK (Python) | [https://github.com/amazon-braket/amazon-braket-sdk-python](https://github.com/amazon-braket/amazon-braket-sdk-python) |
-| Examples | [https://github.com/amazon-braket/amazon-braket-examples](https://github.com/amazon-braket/amazon-braket-examples) |
-| Pricing | [https://aws.amazon.com/braket/pricing/](https://aws.amazon.com/braket/pricing/) |
-| Blog | [https://aws.amazon.com/blogs/quantum-computing/](https://aws.amazon.com/blogs/quantum-computing/) |
-| GitHub Organization | [https://github.com/amazon-braket](https://github.com/amazon-braket) |
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-## Maintainers
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Amazon Braket: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-**Kin Lane** — [kin@apievangelist.com](mailto:kin@apievangelist.com)
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/amazon-braket/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
